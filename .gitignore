@@ -1,10 +1,10 @@
 .DS_Store 
 ._*
 *.mp4
-*.webm
-*.gif
-*.png
-*.jpeg
-*.jpg
-*.webp
+# *.webm
+# *.gif
+# *.png
+# *.jpeg
+# *.jpg
+# *.webp
 .idea

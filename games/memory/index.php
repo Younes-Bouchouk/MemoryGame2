@@ -1,3 +1,5 @@
+<?php require_once '../../utils/common.php'; ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -14,7 +16,7 @@
 
     <div id="hud">
 
-        <form action="../Memory/memory.html">
+        <form action="<?php echo PROJECT_FOLDER ;?>games/memory/scores.php">
             <input type="submit" value="retour" id="back">
         </form>
             <input type="submit" value="Pause" id="Pause">

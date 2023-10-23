@@ -8,7 +8,6 @@
     <!-- <link rel="stylesheet" href="./css/header.css"> -->
     <link rel="stylesheet" href="styles/header.css">
     <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="../components/chatBox.css">
     <link rel="stylesheet" href="styles/footer.css">
     <title>MemoryGame - Accueil</title>
 </head>

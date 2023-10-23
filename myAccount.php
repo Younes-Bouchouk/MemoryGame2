@@ -1,33 +1,23 @@
+<?php require_once 'utils/common.php' ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MemoryGame - Mon compte</title>
-    <link rel="stylesheet" href="../components/header.css">
-    <link rel="stylesheet" href="css/myAccount.css">
-    <link rel="stylesheet" href="../components/footer.css">
+    <link rel="stylesheet" href="styles/header.css">
+    <link rel="stylesheet" href="styles/myAccount.css">
+    <link rel="stylesheet" href="styles/footer.css">
 </head>
 
 <body>
 
-    <header>
-        <h1 id="title">Memory Game</h1>
-        <nav>
-            <a href="../Accueil/index.html">ACCUEIL</a>
-            <a href="../Memory/levels.html">JEU</a>
-            <a href="../Scores/scores.html">SCORES</a>
-            <a href="../Contact/contact.html">NOUS CONTACTER</a>
-            <a href="../Login/login.html">CONNEXION</a>
-            <a href="../MyAccount/myAccount.html">MON COMPTE</a>
-        </nav>
-    </header>
+    <?php require_once SITE_ROOT.'partials/header.php'; ?>
     
     <div id="banner">
         <h1>COMPTE</h1>
     </div>
-
-
 
     <div id="container">
         <div id="profil">
