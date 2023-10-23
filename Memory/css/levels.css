@@ -1,0 +1,64 @@
+
+form{
+    margin: 100px auto;
+    width: 90%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+input{
+    color: lightgray;
+    background-color: rgb(39, 38, 69);
+    width: 100% ;
+    border: 0;
+    margin-bottom: 40px;
+    border-radius: 5px;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#boutonNovice{
+    background-color: rgb(78, 136, 217);
+    background: linear-gradient(130deg, cyan 0%, blue 100%);
+}
+
+#boutonNovice:hover{
+    box-shadow: 0 0 40px 10px blue;
+}
+
+#boutonFacile{
+    background-color:green;
+    background: linear-gradient(130deg, chartreuse 0%, darkgreen 100%);
+}
+
+#boutonFacile:hover{
+    box-shadow: 0 0 40px 10px green;
+}
+
+#boutonIntermediaire{
+    background: linear-gradient(130deg, orange 0%, red 100%);
+}
+
+#boutonIntermediaire:hover{
+    box-shadow: 0 0 40px 10px red;
+}
+
+#boutonDifficile{
+    background: linear-gradient(130deg,rgb(151, 16, 151) 0%, rgb(30, 1, 59) 100%);
+}
+
+#boutonDifficile:hover{
+    box-shadow: 0 0 40px 10px purple;
+}
+
+#boutonExtreme{
+    background: linear-gradient(130deg, rgb(30, 30, 30) 0%, black 10%,black 90%, rgb(30, 30, 30) 100%);
+}
+
+#boutonExtreme:hover{
+    box-shadow: 0 0 40px 10px black;
+}
