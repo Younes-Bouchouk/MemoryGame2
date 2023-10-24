@@ -30,7 +30,7 @@
         <div id="envoyer-message">
             <input type="text" name="" id="message" placeholder="Entrez votre message" wrap="hard">
             <label for="message"></label>
-            <button id="send"><img src="<?php echo PROJECT_FOLDER ;?>assets/send_message.png"></button>
+            <button id="send"></button>
         </div>
 
 

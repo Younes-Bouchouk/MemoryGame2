@@ -69,7 +69,7 @@
     </div>
 
     <div id="stats">
-        <img src="assets/img_stats.jpg" alt="">
+        <img src="assets/imgstats.jpg" alt="">
         <div id="stats-cards">
             <div class="stats-row">
                 <div class="cards" id="card-1">

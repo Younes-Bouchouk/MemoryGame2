@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} 
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    height: 100vh;
+    width: 100vw;
+}
+
+.douze, .huit, .quatre {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+table {
+    padding-top: 40px;
+    margin: 150px;
+    display: flex;
+    align-items: center;
+}
+
+.carte {
+    width: 115px;
+    height: 150px;
+    background-size: cover;
+    background-position: center;
+    background-image: url(../assets/Theme_futuriste/dos.png);
+    margin: 10px;
+}
+
+.huit .carte{
+    width: 41.665px;
+    height: 56.665px;
+}
+
+.douze .carte{
+    width: 27.77px;
+    height: 37.77px;
+}
+
+.douze{
+    width: 100vw;
+    background-image: url(../assets/younes/fond.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.huit{
+    background-image: url(../assets/alexis/Battle_of_Dagorlad.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.quatre{
+    background-image: url(../assets/Theme_futuriste/fond.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+}
+
+#back, #pause{
+  background-color: #ec9123;
+  color: lightgray;
+  width: 150px;
+  height: 50px;
+  border: 0;
+  margin: 20px 0;
+  border-radius: 2px;
+}
+
+.stats{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 20px 0;
+    
+}
+
+#scores{
+    font-size: 40px;
+         color: white;
+}
+
+#HorlogeEtDate{
+    font-size: 40px;
+    color: white;
+}
+
+#hud {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+input:focus {
+    box-shadow: 0 0 5px 3px #eb9123;
+    outline: none;
+}
+     

@@ -140,6 +140,9 @@
 }
 
 #send {
+    background-image: url(../assets/send.png);
+    background-repeat: no-repeat;
+    background-position: center;
     border: none;
     cursor: pointer;
     color: white;
@@ -150,7 +153,10 @@
 }
 
 #send:hover {
+    background-image: url(../assets/send_hover.png);
     background-color: lightgray;
 }
+
+
 
 

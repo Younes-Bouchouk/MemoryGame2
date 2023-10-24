@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MemoryGame - Jouer</title>
     <link rel="stylesheet" href="../../styles/chat.css"> 
-    <link rel="stylesheet" href="css/game.css">
+    <link rel="stylesheet" href="<?php echo PROJECT_FOLDER ; ?>styles/game.css">
 </head>
 
 <body>
@@ -17,9 +17,9 @@
         <div id="hud">
 
             <form action="<?php echo PROJECT_FOLDER ;?>games/memory/scores.php">
-                <input type="submit" value="retour" id="back">
+                <input type="submit" value="Retour" id="back">
             </form>
-                <input type="submit" value="Pause" id="Pause">
+                <input type="submit" value="Pause" id="pause">
                 <p id="scores">scores : 0 secondes</p>
                 <!--<p id="HorlogeEtDate"> 15h17 : 13/10/2023</p> -->
 
@@ -56,8 +56,9 @@
     </div>
 
     <?php require_once SITE_ROOT.'chat.php'; ?>
+
 </body>
 
-    <script src="../../scripts/app.js"></script> 
+    <script src="../../scripts/chat.js"></script> 
 
 </html>

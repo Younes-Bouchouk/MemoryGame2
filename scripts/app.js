@@ -19,14 +19,14 @@ chatBtn.addEventListener('click', function() {
 
 // --- Bouton Send ----------
 
-var sendBtn = document.getElementById("send");
-var imgSendBtn = document.querySelector('#send>img')
+// var sendBtn = document.getElementById("send");
+// var imgSendBtn = document.querySelector('#send>img')
 
-sendBtn.addEventListener("mouseover", function() {
-    imgSendBtn.src = "../assets/send_message_hover.png";
-});
+// sendBtn.addEventListener("mouseover", function() {
+//     imgSendBtn.src = "../../assets/send_hover.png";
+// }); 
 
-sendBtn.addEventListener("mouseout", function() {
-    imgSendBtn.src = "../assets/send_message.png";
-});
+// sendBtn.addEventListener("mouseout", function() {
+//     imgSendBtn.src = "../../assets/send.png";
+// });
 
