@@ -1,6 +1,6 @@
 #chatbox-close {
     z-index: 11;
-    background-image: url(./assets/chatbox.png);
+    background-image: url(../assets/chatbox.png);
     background-repeat: no-repeat;
     background-position: center;
     position: fixed;

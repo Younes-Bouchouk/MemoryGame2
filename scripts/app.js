@@ -23,10 +23,10 @@ var sendBtn = document.getElementById("send");
 var imgSendBtn = document.querySelector('#send>img')
 
 sendBtn.addEventListener("mouseover", function() {
-    imgSendBtn.src = "../components/assets/send-message-hover.png";
+    imgSendBtn.src = "../assets/send_message_hover.png";
 });
 
 sendBtn.addEventListener("mouseout", function() {
-    imgSendBtn.src = "../components/assets/send-message.png";
+    imgSendBtn.src = "../assets/send_message.png";
 });
 

@@ -8,6 +8,7 @@
     <!-- <link rel="stylesheet" href="./css/header.css"> -->
     <link rel="stylesheet" href="styles/header.css">
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/chat.css">    
     <link rel="stylesheet" href="styles/footer.css">
     <title>MemoryGame - Accueil</title>
 </head>
@@ -19,7 +20,7 @@
     <div id="top">
 
         <video autoplay loop muted>
-            <source src="./assets/energy_field.mp4" type="video/mp4">
+            <source src="assets/background.mp4" type="video/mp4">
         </video>
 
         <div id="welcome">
@@ -36,9 +37,9 @@
 
     <div id="presentation">
         <div id="images">
-            <img src="assets/img-presentation-1.png" alt="">
-            <img src="assets/img-presentation-2.png" alt="">
-            <img src="assets/img-presentation-3.png" alt="">
+            <img src="assets/img_presentation_1.png" alt="">
+            <img src="assets/img_presentation_2.png" alt="">
+            <img src="assets/img_presentation_3.png" alt="">
         </div>
         <div id="textes">
             <section>
@@ -68,7 +69,7 @@
     </div>
 
     <div id="stats">
-        <img src="assets/img-stats.jpg" alt="">
+        <img src="assets/img_stats.jpg" alt="">
         <div id="stats-cards">
             <div class="stats-row">
                 <div class="cards" id="card-1">
@@ -140,48 +141,13 @@
         </div>
     </div>
 
-    <button id="chatbox-close" type="menu"></button>
-
-    <div id="chatbox">
-
-        <div id="screen">
-
-            <p class="me">Y'a qui ?</p>
-
-            <div class="sender"><img src="../Accueil/assets/genzo.webp" alt=""> <section>Genzo <span>- 18h45</span></section></div>
-            <p class="other">Moi. Mais j'veux pas jouer avec toi t'es trop guez. Tu fais que des team diff</p>
-
-            <p class="me">Toi j'vais t'attraper à la coding t'es mort! Valérie ou pas tu vas voir</p>
-
-            <div class="sender"><img src="../Accueil/assets/alexis.jpg" alt=""> <section>DarkVador <span>- 19h01</span></section></div>
-            <p class="other">Azy quand tu veux, où tu veux pelo</p>
-
-            <p class="other">J'arrive avec mes poings</p>
-
-            <p class="me">J'viens tout seul, tkt j'ai vraiment pas peur de toi!</p>
-            
-            <div class="sender"><img src="../Accueil/assets/nico.webp" alt=""> <section>NicoPinguin <span>- 19h05</span></section></div>
-            <p class="other">Azi, je ramène mes gants de boxe, on va niqué de fou la !</p>
-
-            <p class="me">Aah, tu fais de la boxe XD j'savais pas</p>
-
-            <p class="other">Je FF t'es trop un lâche</p>
-            
-        </div>
-
-        <div id="envoyer-message">
-            <input type="text" name="" id="message" placeholder="Entrez votre message" wrap="hard">
-            <label for="message"></label>
-            <button id="send"><img src="../components/assets/send-message.png"></button>
-        </div>
-
-
-    </div>
+    <?php require_once SITE_ROOT.'chat.php'; ?>
 
     <?php require_once SITE_ROOT.'partials/footer.php'; ?>
+    
 
 </body>
 
-    <script src="../components/hamburger.js"></script>
+    <script src="scripts/app.js"></script> 
 
 </html>

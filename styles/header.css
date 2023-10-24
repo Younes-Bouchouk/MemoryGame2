@@ -155,7 +155,7 @@ nav a:hover::after {
 }
 
 #banner{
-    background-image: url(../components/assets/banner.jpeg);
+    background-image: url("../assets/banner.jpeg");
     background-size: cover ;
     background-position: 0 78%;
     aspect-ratio: 16/2;
