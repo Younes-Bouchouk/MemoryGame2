@@ -10,11 +10,11 @@
                 <p><span>Locatisation :</span> Cergy </p>
         
                 <div>
-                    <a class="a" href="https://www.facebook.com/?locale=fr_FR" target="_blank"><img src="../components/assets/facebook.png"></img></a>
-                    <a class="a" href=" https://twitter.com/?lang=fr" target="_blank"><img src="../components/assets/twitter.png"></img></a>
-                    <a class="a" href="https://www.google.fr/" target="_blank"><img src="../components/assets/google.png"></img></a>
-                    <a class="a" href="https://www.pinterest.fr/" target="_blank"><img src="../components/assets/pinterest.png"></img></a>
-                    <a class="a" href="https://www.instagram.com/" target="_blank"><img src="../components/assets/instagram.png"></img></a>
+                    <a class="a" href="https://www.facebook.com/?locale=fr_FR" target="_blank"><img src="<?php echo PROJECT_FOLDER ?>assets/facebook.png"></img></a>
+                    <a class="a" href=" https://twitter.com/?lang=fr" target="_blank"><img src="<?php echo PROJECT_FOLDER ?>assets/twitter.png"></img></a>
+                    <a class="a" href="https://www.google.fr/" target="_blank"><img src="<?php echo PROJECT_FOLDER ?>assets/google.png"></img></a>
+                    <a class="a" href="https://www.pinterest.fr/" target="_blank"><img src="<?php echo PROJECT_FOLDER ?>assets/pinterest.png"></img></a>
+                    <a class="a" href="https://www.instagram.com/" target="_blank"><img src="<?php echo PROJECT_FOLDER ?>assets/instagram.png"></img></a>
                 </div>
             </div>
         

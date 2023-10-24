@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../styles/header.css">
     <link rel="stylesheet" href="../../styles/scores.css">
+    <link rel="stylesheet" href="../../styles/chat.css"> 
     <link rel="stylesheet" href="../../styles/footer.css">
     <title> MemoryGame - Scores</title>
 </head>
@@ -60,10 +61,12 @@
         </table>
     </div>
         
+    <?php require_once SITE_ROOT.'chat.php'; ?>
+
     <?php require_once SITE_ROOT.'partials/footer.php'; ?>
 
 </body>
 
-    <script src="../components/hamburger.js"></script>
+    <script src="../../scripts/app.js"></script> 
 
 </html>

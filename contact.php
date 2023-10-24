@@ -22,15 +22,15 @@
 
     <div id="coordonnées">
         <div class="card">
-            <img class="card-img" src=".//assets/phonelogo.png" alt="phone">
+            <img class="card-img" src="assets/logo_phone.png" alt="phone">
             <p>07 82 87 68 99</p>
         </div>
         <div class="card">
-            <img class="card-img" src=".//assets/maillogo.png" alt="mail">
+            <img class="card-img" src="assets/logo_mail.png" alt="mail">
             <p>jeje.moran@gmail.com</p>
         </div>  
         <div class="card">
-            <img class="card-img" src=".//assets/locationlogo.png" alt="location">
+            <img class="card-img" src="assets/logo_location.png" alt="location">
             <p>Cergy</p>
         </div> 
     </div>
