@@ -26,7 +26,7 @@
         <div id="welcome">
             <h1>BIENVENUE DANS <br> NOTRE STUDIO !</h1>
             <p>Venez challenger les cerveaux les plus agiles</p>
-            <a href="../Memory/levels.html">JOUER !</a>
+            <a href="games/memory/index.php">JOUER !</a>
         </div>
 
         <div id="filtre"></div>
@@ -69,7 +69,7 @@
     </div>
 
     <div id="stats">
-        <img src="assets/imgstats.jpg" alt="">
+        <img src="assets/img_stats.jpg" alt="">
         <div id="stats-cards">
             <div class="stats-row">
                 <div class="cards" id="card-1">

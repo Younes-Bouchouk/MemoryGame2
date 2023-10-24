@@ -21,9 +21,9 @@
             <div id="footer-right">
                 <h1>Power Of Memory</h1>
                 <ul>
-                    <a href="../Memory/levels.html">Jouer !</a>
-                    <a href="../Scores/scores.html">Les scores</a>
-                    <a href="../Contact/contact.html">Nous contacter</a>
+                    <a href="<?php echo PROJECT_FOLDER ?>games/memory/index.php">Jouer !</a>
+                    <a href="<?php echo PROJECT_FOLDER ?>games/memory/scores.php">Les scores</a>
+                    <a href="<?php echo PROJECT_FOLDER ?>contact.php">Nous contacter</a>
                 </ul>
             </div>
         

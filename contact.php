@@ -2,6 +2,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,13 +13,11 @@
 </head>
 
 <body>
+    <?php require_once SITE_ROOT . 'partials/header.php'; ?>
 
-    <?php require_once SITE_ROOT.'partials/header.php'; ?>
-    
     <div id="banner">
         <h1>CONTACT</h1>
     </div>
-
 
     <div id="coordonnées">
         <div class="card">
@@ -28,13 +27,13 @@
         <div class="card">
             <img class="card-img" src="assets/logo_mail.png" alt="mail">
             <p>jeje.moran@gmail.com</p>
-        </div>  
+        </div>
         <div class="card">
             <img class="card-img" src="assets/logo_location.png" alt="location">
             <p>Cergy</p>
-        </div> 
+        </div>
     </div>
-    
+
     <form action="php.">
         <div id="first-row">
             <input type="text" id=nom placeholder="Pseudo" required="required">
@@ -53,10 +52,10 @@
         <label for="envoi"></label>
     </form>
 
-    <?php require_once SITE_ROOT.'partials/footer.php'; ?>
+    <?php require_once SITE_ROOT . 'partials/footer.php'; ?>
 
 </body>
 
-    <script src="../components/hamburger.js"></script>
+<script src="../components/hamburger.js"></script>
 
 </html>
