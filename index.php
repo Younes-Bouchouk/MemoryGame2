@@ -96,7 +96,7 @@
                 </div>
     
                 <div class="cards" id="card-2">
-                    <p class="num">78</p>
+                    <p class="num">2</p>
                     <p class="description">Joueurs Connectés</p>
                 </div>
             </div>
@@ -140,7 +140,7 @@
                 <h3>NICOLAS<br> 
                     <span>(Scrum Master)</span>
                 </h3>
-                <h4>Meilleur Scrum Master</h4>
+                <h4> 'EX' Meilleur Scrum Master</h4>
                 <div class="rs">
                     <a></a>
                     <a href="https://github.com/Jjbilou" target="_blank"></a>
