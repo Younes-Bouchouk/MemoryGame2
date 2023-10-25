@@ -1,5 +1,21 @@
 <?php require_once '../../utils/common.php'; ?>
 
+<?php include SITE_ROOT.'utils/database.php';
+    $pdo = connectToDbAndGetPdo();
+
+    $pdoStatement = $pdo->prepare('SELECT G.gameName, U.pseudo, S.difficulty, S.scores  
+                                    FROM scores as S
+                                    INNER JOIN users as U
+                                    ON S.playerId = U.id
+                                    INNER JOIN game as G 
+                                    ON S.gameId = G.id
+                                    ');
+    $pdoStatement->execute();
+    $scores = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -21,6 +37,42 @@
     </div>
 
     <table>
+    <th>Nom du Jeu</th> <th>Joueur</th> <th>Niveau de Difficulté</th> <th>Score</th>
+        <?php foreach ($scores as $row) {
+            $gameName = $row['gameName'];
+            $pseudo = $row['pseudo'];
+            $difficulty = $row['difficulty'];
+            $score = $row['scores'];
+
+
+            if ($pseudo == "Genzo") {
+                echo("  
+                    <tr>
+                        <td class='connected'>".$gameName."</td>
+                        <td class='connected'>".$pseudo."</td>
+                        <td class='connected'>".$difficulty."</td>
+                        <td class='connected'>".$score."</td>
+                    </tr>
+                ");
+            }
+            
+            else {
+
+                echo("  
+                    <tr>
+                        <td>".$gameName."</td>
+                        <td>".$pseudo."</td>
+                        <td>".$difficulty."</td>
+                        <td>".$score."</td>
+                    </tr>
+                ");   
+            }
+        }
+        ?>  
+    </table>
+
+
+    <!-- <table>
         <tr id="table-title">
             <th scope="col">Nom du Jeu</th> <th>Joueur</th> <th>Niveau de Difficulté</th> <th>Score</th> <th>Date & Heure</th>
             <tr>
@@ -58,7 +110,7 @@
                 <td>347 sec</td>
                 <td>17/10/2023 22H00</td>
             </tr>
-        </table>
+        </table> -->
     </div>
         
     <?php require_once SITE_ROOT.'chat.php'; ?>

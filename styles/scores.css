@@ -38,6 +38,7 @@ tbody {
 
 tbody th {
     font-size: 30px;
+    border: 2px solid cyan;
 }
 
 tbody tr {
@@ -79,4 +80,8 @@ td {
     td {
         font-size: 12px;
     }
+}
+
+.connected {
+    color: #eb9123;
 }

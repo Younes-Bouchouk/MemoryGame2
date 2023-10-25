@@ -1,5 +1,21 @@
 <?php require_once 'utils/common.php' ?>
 
+<?php include "utils/database.php";
+    $pdo = connectToDbAndGetPdo();
+
+    $pdoStatement = $pdo->prepare('SELECT count(id) as nbUsers FROM users');
+    $pdoStatement->execute();
+    $users = $pdoStatement->fetch();
+
+    $pdoStatement = $pdo->prepare('SELECT count(id) as nbParty FROM scores');
+    $pdoStatement->execute();
+    $party = $pdoStatement->fetch();
+
+    $pdoStatement = $pdo->prepare('SELECT MIN(scores) as minScore FROM scores');
+    $pdoStatement->execute();
+    $topScore = $pdoStatement->fetch();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -73,24 +89,30 @@
         <div id="stats-cards">
             <div class="stats-row">
                 <div class="cards" id="card-1">
-                    <p class="num">0</p>
+                    <p class="num">
+                    <?php echo $party->nbParty; ?>
+                    </p>
                     <p class="description">Partie Jouées</p>
                 </div>
     
                 <div class="cards" id="card-2">
-                    <p class="num">0</p>
+                    <p class="num">78</p>
                     <p class="description">Joueurs Connectés</p>
                 </div>
             </div>
 
             <div class="stats-row">
                 <div class="cards" id="card-3">
-                    <p class="num">0</p>
+                    <p class="num">
+                        <?php echo $topScore->minScore; ?>
+                    </p>
                     <p class="description">Temps Record</p>
                 </div>
 
                 <div class="cards" id="card-4">
-                    <p class="num">0</p>
+                    <p class="num">
+                        <?php echo $users->nbUsers; ?>
+                    </p>
                     <p class="description">Joueurs Inscrits</p>
                 </div>
             </div>
@@ -122,7 +144,7 @@
                 <div class="rs">
                     <a></a>
                     <a href="https://github.com/Jjbilou" target="_blank"></a>
-                    <a></a>
+                    <a href="https://brawltime.ninja/profile/G2Y0Y20R#sharepic" target="_blank"></a>
                     
                 </div>
             </div>

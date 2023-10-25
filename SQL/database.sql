@@ -17,30 +17,31 @@ VALUES (5, 'younes.bouchouk@gmail.com', 'mdp123', 'Genzo', '2023-10-16 10:00:00'
 --------------
 
 -- Création de la base de données --
-DROP DATABASE IF EXISTS mySQL;
-CREATE DATABASE mySQL CHARACTER SET 'utf8';
+DROP DATABASE IF EXISTS myConflictDB;
+CREATE DATABASE myConflictDB CHARACTER SET 'utf8';
 
 -- Utilisation de la base de données --
-USE mySQL;
+USE myConflictDB;
 
 -- Création des tables --
 CREATE TABLE users (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT, -- Clé primaire
-    email VARCHAR(256) NOT NULL,
+    firstName VARCHAR(256) NOT NULL,
+    email VARCHAR(256) UNIQUE NOT NULL,
     mdp VARCHAR(256) NOT NULL,
-    pseudo VARCHAR(256) NOT NULL,
-    inscription DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    lastConnexion DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    pseudo VARCHAR(256) UNIQUE NOT NULL,
+    inscription DATETIME NOT NULL DEFAULT NOW(),
+    lastConnexion DATETIME NOT NULL DEFAULT NOW(),
     PRIMARY KEY (id)
 ) ENGINE = InnoDB; -- Utilisation de "InnoDB" pour le moteur de stockage
 
 CREATE TABLE scores (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT, -- Clé primaire
-    playerId INT UNSIGNED NULL, -- Clé étrangère
     gameId INT UNSIGNED NULL, -- Clé étrangère
+    playerId INT UNSIGNED NULL, -- Clé étrangère
     difficulty ENUM('NOVICE', 'FACILE', 'INTERMEDIAIRE', 'DIFFICILE', 'EXTREME') NOT NULL,
     scores INT NOT NULL,
-    timeParty DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
+    timeParty DATETIME NOT NULL DEFAULT NOW(),
     PRIMARY KEY (id)
 ) ENGINE = InnoDB; 
 
@@ -49,7 +50,7 @@ CREATE TABLE messages (
     gameId INT UNSIGNED NULL, -- Clé étrangère
     userId INT UNSIGNED NULL, -- Clé étrangère
     messages TEXT NOT NULL,
-    timeMessage DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    timeMessage DATETIME NOT NULL DEFAULT NOW(),
     PRIMARY KEY (id)
 ) ENGINE = InnoDB; 
 
@@ -58,6 +59,7 @@ CREATE TABLE game (
     gameName VARCHAR(40) NOT NULL,
     PRIMARY KEY (id)
 ) ENGINE = InnoDB;
+
 --------------
 -- story 2 --
 --------------
