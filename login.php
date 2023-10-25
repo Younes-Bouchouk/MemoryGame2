@@ -27,7 +27,7 @@
         <input type="password" id="motDePasse" placeholder="Mot de passe" required="required">
         <label for="motDePasse"></label>
         <div id="form-btn">
-            <a href="../Register/register.html">Créer un compte</a>
+            <a href="<?php echo PROJECT_FOLDER ?>register.php">Créer un compte</a>
             <input type="submit" value="Connexion" id="boutonConnexion">
         </div>
     </form>

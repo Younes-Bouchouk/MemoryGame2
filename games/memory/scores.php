@@ -3,15 +3,15 @@
 <?php include SITE_ROOT.'utils/database.php';
     $pdo = connectToDbAndGetPdo();
 
-    $pdoStatement = $pdo->prepare('SELECT G.gameName, U.pseudo, S.difficulty, S.scores  
+    $pdlSelectpseudo = $pdo->prepare('SELECT G.gameName, U.pseudo, S.difficulty, S.scores  
                                     FROM scores as S
                                     INNER JOIN users as U
                                     ON S.playerId = U.id
                                     INNER JOIN game as G 
                                     ON S.gameId = G.id
                                     ');
-    $pdoStatement->execute();
-    $scores = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
+    $pdlSelectpseudo->execute();
+    $scores = $pdlSelectpseudo->fetchAll(PDO::FETCH_ASSOC);
 
 
 ?>
@@ -35,6 +35,57 @@
     <div id="banner">
         <h1>SCORES</h1>
     </div>
+    
+    <form method="get">
+    <input type="search" placeholder="Rechercher" id="searchPseudo" name="search">
+    <input type='submit' value='enter' id='searchBtn' name='searchBtn'>
+    </form>
+    <table>
+    <?php
+        if (isset($_GET["searchBtn"]) AND $_GET["searchBtn"] == "enter"){
+            $_GET["search"] = htmlspecialchars($_GET["search"]); //pour sécuriser le formulaire contre les failles html
+            $pseudo = $_GET["search"];
+            $pseudo = trim($pseudo); //pour supprimer les espaces dans la requête de l'internaute
+            $pseudo = strip_tags($pseudo); //pour supprimer les balises html dans la requête
+            //$pseudo = strtolower($pseudo);
+            //$select_pseudo = $bdd->prepare("SELECT titre, contenu FROM articles WHERE titre LIKE ? OR contenu LIKE ?");
+            //$select_pseudo->execute(array("%".$pseudo."%", "%".$pseudo."%"));
+            $pseudo = strtolower($pseudo);
+            $pdo = connectToDbAndGetPdo();
+
+            $pdoSelectpseudo = $pdo->prepare('SELECT G.gameName, U.pseudo, S.difficulty, S.scores  
+                                            FROM scores as S
+                                            INNER JOIN users as U
+                                            ON S.playerId = U.id
+                                            INNER JOIN game as G 
+                                            ON S.gameId = G.id
+                                            ');
+            $pdoSelectpseudo->execute();
+            $scores = $pdoSelectpseudo->fetchAll();
+
+            foreach ($scores as $row) {
+                $gameName = $row->gameName;
+                $nickname = $row->pseudo;
+                $difficulty = $row->difficulty;
+                $score = $row->scores;
+    
+    
+                if ($pseudo == $nickname) {
+                    echo("  
+                        <tr>
+                            <td class='connected'>".$gameName."</td>
+                            <td class='connected'>".$nickname."</td>
+                            <td class='connected'>".$difficulty."</td>
+                            <td class='connected'>".$score."</td>
+                        </tr>
+                    ");
+                }
+        
+            }
+        }
+        
+    ?>
+    </table>
 
     <table>
     <th>Nom du Jeu</th> <th>Joueur</th> <th>Niveau de Difficulté</th> <th>Score</th>

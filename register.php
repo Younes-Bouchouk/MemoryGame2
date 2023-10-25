@@ -1,4 +1,7 @@
 <?php require_once 'utils/common.php' ?>
+<?php
+    $pseudoPattern = '/^(?=.[a-z])(?=.[A-Z])(?=.[0-9])(?=.[-_]).{4,}$/';
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -19,7 +22,7 @@
         <h1>INSCRIPTION</h1>
     </div>
 
-    <form action="index.php">
+    <form action="index.php" method="post">
         <input type="email", id="mail" placeholder="Email" required="required">
         <label for="mail"></label>
 

@@ -140,7 +140,7 @@
                 <h3>NICOLAS<br> 
                     <span>(Scrum Master)</span>
                 </h3>
-                <h4>Pro Player BrawlStar</h4>
+                <h4>Meilleur Scrum Master</h4>
                 <div class="rs">
                     <a></a>
                     <a href="https://github.com/Jjbilou" target="_blank"></a>
