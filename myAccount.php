@@ -1,4 +1,23 @@
-<?php require_once 'utils/common.php' ?>
+<?php 
+
+    require_once 'utils/common.php';
+
+    if(isset($_GET["submit"])) {
+        echo("T'as appuyer sur le boutons");
+        if (isset($_FILES['avatar']['tmp_name'])) {
+            echo("J'ai pris ton image");
+            $retour = copy($_FILES['avatar']['tmp_name'], $_FILES['avatar']['name']);
+            if($retour) {
+                echo '<p>La photo a bien été envoyée.</p>';
+                echo '<img src="' . $_FILES['avatar']['name'] . '">';
+            }
+        }
+    }
+
+
+
+
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -22,8 +41,12 @@
     <div id="container">
         <div id="profil">
             <div id="pdp">
-                <img src="assets/pdp_younes.webp" alt="" >
-                <button></button>
+                <img src="userFiles/avatar.png" alt="" >
+                <form method="post"> 
+                    <label for="file" class="label-file"><img id="avatar" src="assets/logo_modify.png" alt=""></label>
+                    <input id="file" class="input-file" type="file" name="avatar">
+                    <input type="submit" value="Télécharger l'image" name="submit">
+                </form>
             </div>        
 
             <div id="details">
@@ -57,8 +80,7 @@
 
             <div id="bio">
                 <p>Biographie :</p>
-                <p>Ouai c'est la bio XD LoL amgleeeeeeeeee ame sikaram GLEEEEEEEEEEEEE
-                    kAKAROT xd sheeeeeeeeeeeeeeeeche
+                <p>ConflictTeam + Valentin = ❤️😏
                 </p>
             </div>
 

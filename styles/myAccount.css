@@ -43,7 +43,7 @@ nav a:nth-child(6)::after {
     margin: 10px;
 }
 
-#profil button {
+#profil #avatar {
     position: absolute;
     bottom: 10px;
     left: 125px;
@@ -55,6 +55,14 @@ nav a:nth-child(6)::after {
     background-image: url("../assets/logo_modify.png");
     background-size: contain;
     cursor: pointer;
+}
+
+#avatar {
+    width: 30px ;
+}
+
+#file {
+    display: none;
 }
 
 #details {

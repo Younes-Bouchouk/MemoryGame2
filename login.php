@@ -20,8 +20,6 @@
                 $idUser = $row->id;
                 $firstName = $row->firstName;
 
-                echo($idUser);
-
                 if ( password_verify($password, $mdp) ) {
                     $_SESSION['userId'] = $idUser ;
                     $userConnectedMessage = "Bonjour ". $firstName . ", vous êtes bien connecté !";
