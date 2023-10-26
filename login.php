@@ -34,12 +34,6 @@
                     echo("Le mdp est mauvais");
                 }
 
-
-                // if(password_verify($password, $mdp)) {
-                //     echo("Le mdp haché est vérifié")
-                // } else {
-                //     echo
-                // }
             }
 
         }

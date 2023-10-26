@@ -40,19 +40,19 @@
             <div id="pseudo">
                 <p>Pseudo :</p>
                 <p>Genzo78</p>
-                <a href="newPseudo.html">Modifier</a>
+                <a href="<?php SITE_ROOT ?>changeInfos/newPseudo.php">Modifier</a>
             </div>
 
             <div id="mail">
                 <p>Mail :</p>
                 <p>genzo.w@gmail.com</p>
-                <a href="newEmail.html">Modifier</a>
+                <a href="<?php SITE_ROOT ?>changeInfos/newEmail.php">Modifier</a>
             </div>
 
             <div id="mail">
                 <p>Mot de passe :</p>
                 <p>********</p>
-                <a href="newPassword.html">Modifier</a>
+                <a href="<?php SITE_ROOT ?>changeInfos/newPassword.php">Modifier</a>
             </div>
 
             <div id="bio">
