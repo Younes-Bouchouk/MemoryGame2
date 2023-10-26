@@ -2,6 +2,7 @@
     require_once '../utils/common.php' ;
     include SITE_ROOT . 'utils/database.php';
 
+    $passwordPattern = '/^(?=.[a-z])(?=.[A-Z])(?=.[0-9])(?=.[!@#$%^&*]).{8,}$/';
     $pdo = connectToDbAndGetPdo();
 
     if (isset($_POST["newPasswordBtn"])) {
@@ -18,32 +19,26 @@
             
             $oldPasswordResult = $passwordUser->mdp;
 
-            if ( password_verify($oldPassword, $oldPasswordResult) ) {
-                echo("Changement d'un mdp haché");
+            if (preg_match($passwordPattern, $password) == 0) {
+                $passwordErrorMessage = "Il faut que votre mot de passe contienne au minimum une majuscule, un chiffre et un caractère spécial";
 
-                $pdoUpdatePassword = $pdo->prepare('UPDATE users SET mdp = :newPassword WHERE id = :userId');            
-                $pdoUpdatePassword->execute([
-                    ":userId" => $_SESSION['userId'],
-                    ":newPassword" => $newPassword
-                ]);
+                if ( password_verify($oldPassword, $oldPasswordResult) || $oldPasswordResult == $oldPassword) {
+                    $succesPasswordMessage = "Votre mot de passe à bien été modifié";
 
-            } elseif($oldPasswordResult == $oldPassword){
-                echo("Changement d'un mdp pas haché");
+                    $pdoUpdatePassword = $pdo->prepare('UPDATE users SET mdp = :newPassword WHERE id = :userId');            
+                    $pdoUpdatePassword->execute([
+                        ":userId" => $_SESSION['userId'],
+                        ":newPassword" => password_hash($newPassword, CRYPT_SHA256)
+                    ]);
 
-                $pdoUpdatePassword = $pdo->prepare('UPDATE users SET mdp = :newPassword WHERE id = :userId');            
-                $pdoUpdatePassword->execute([
-                    ":userId" => $_SESSION['userId'],
-                    ":newPassword" => $newPassword
-                ]); 
-            }   else {
-                echo("Le mdp est mauvais");
+                } else {
+                    $succesPasswordMessage = "Votre mot de passe n'à pas été modifié ";
+                }
             }
 
         }
 
     }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -94,6 +89,9 @@
 
             <input type="submit" value="Envoyer" id="envoiePseudo" name="newPasswordBtn">
             <label for="envoiePseudo"></label>
+            <?php if(isset($succesPasswordMessage)):?>
+                <p><?php echo $succesPasswordMessage ?></p>
+            <?php endif; ?>
         </form>
 
         </div>

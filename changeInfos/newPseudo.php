@@ -4,41 +4,40 @@
 
     $pdo = connectToDbAndGetPdo();
 
-    if (isset($_POST["newMailBtn"])) {
+    if (isset($_POST["newPseudoBtn"])) {
 
-        $oldMail = $_POST["oldMail"];
-        $newMail = $_POST["newMail"];
-        $confirmNewMail = $_POST["confirmNewMail"];
+        $oldPseudo = $_POST["oldPseudo"];
+        $newPseudo = $_POST["newPseudo"];
+        $confirmNewPseudo = $_POST["confirmNewPseudo"];
 
-        $pdoUpdateMail = $pdo->prepare('SELECT email FROM users WHERE id = :userId');            
-        $pdoUpdateMail->execute([":userId" => $_SESSION['userId']]); 
-        $emailUser = $pdoUpdateMail->fetch();
+        $pdoUpdatePseudo = $pdo->prepare('SELECT pseudo FROM users WHERE id = :userId');            
+        $pdoUpdatePseudo->execute([":userId" => $_SESSION['userId']]); 
+        $pseudoUser = $pdoUpdatePseudo->fetch();
 
-        if (isset($emailUser)){
+        if (isset($pseudoUser)){
             
-            $oldMailResult = $emailUser->email;
+            $oldPseudoResult = $pseudoUser->pseudo;
 
-            if($oldMailResult == $oldMail){
+            if($oldPseudoResult == $oldPseudo){
 
-                if($newMail == $confirmNewMail){
+                if($newPseudo == $confirmNewPseudo){
 
-                    $pdoUpdateMail = $pdo->prepare('UPDATE users SET email = :newMail WHERE id = :userId');            
-                    $pdoUpdateMail->execute([
+                    $pdoUpdatePseudo = $pdo->prepare('UPDATE users SET pseudo = :newPseudo WHERE id = :userId');            
+                    $pdoUpdatePseudo->execute([
                         ":userId" => $_SESSION['userId'],
-                        ":newMail" => $newMail
+                        ":newPseudo" => $newPseudo
                     ]); 
 
-                    echo('Email changé gg');
+                    $succesPseudoMessage = "Changement de pseudo effectué";
                 }
 
             }
 
         }
 
-    }
-
-
+    }      
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -76,19 +75,22 @@
             </div>
             <!--<p id="status">
                 " Wsh la team, bien ? Sah je kiff les jeux de mémoire, je mémorise tah les fou. Dans ma famille on y joue de père en fils. Mon grand-père est un ex champion de MemoryGame, il a gagné plein de trophées. Je compte bien prendre la relève étant donnée que mon père lui n'a pas voulu continué "
-            </p>-->
+            </p>--> 
         </div>
 
-            <form action="index.php">
-                <input type="text"  id="ancienPseudo" placeholder="Ancien pseudo" required="required">
+            <form method="post">
+                <input type="text"  id="ancienPseudo" placeholder="Ancien pseudo" required="required" name="oldPseudo">
                 <label for="ancienPseudo"></label>
-                <input type="text"  id="nouveauPseudo" placeholder="Nouveau Pseudo" required="required">
+                <input type="text"  id="nouveauPseudo" placeholder="Nouveau Pseudo" required="required" name="newPseudo">
                 <label for="NouveauPseudo"></label>
-                <input type="text" id="TestPseudo" placeholder="Confirmez votre pseudo" required="required">
+                <input type="text" id="TestPseudo" placeholder="Confirmez votre pseudo" required="required" name="confirmNewPseudo">
                 <label for="TestPseudo"></label>
 
-                <input type="submit" value="Envoyer" id="envoiePseudo">
+                <input type="submit" value="Envoyer" id="envoiePseudo" name="newPseudoBtn">
                 <label for="envoiePseudo"></label>
+                <?php if(isset($succesPseudoMessage)):?>
+                    <p><?php echo $succesPseudoMessage ?></p>
+                <?php endif; ?>
             </form>
 
         </div>

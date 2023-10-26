@@ -21,6 +21,7 @@
             if($oldMailResult == $oldMail){
 
                 if($newMail == $confirmNewMail){
+                    $succesMailMessage = "Votre mail a bien été modifié";
 
                     $pdoUpdateMail = $pdo->prepare('UPDATE users SET email = :newMail WHERE id = :userId');            
                     $pdoUpdateMail->execute([
@@ -28,7 +29,6 @@
                         ":newMail" => $newMail
                     ]); 
 
-                    echo('Email changé gg');
                 }
 
             }
@@ -88,6 +88,9 @@
             <label for="TestPseudo"></label>
             <input type="submit" value="Envoyer" id="envoiePseudo" name="newMailBtn">
             <label for="envoiePseudo"></label>
+            <?php if(isset($succesMailMessage)):?>
+                <p><?php echo $succesMailMessage ?></p>
+            <?php endif; ?>
         </form>
 
         </div>
