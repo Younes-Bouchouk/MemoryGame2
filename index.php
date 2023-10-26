@@ -104,7 +104,7 @@
             <div class="stats-row">
                 <div class="cards" id="card-3">
                     <p class="num">
-                        <?php echo $topScore->minScore; ?>
+                        <?php echo $topScore->minScore; ?>s
                     </p>
                     <p class="description">Temps Record</p>
                 </div>
