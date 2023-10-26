@@ -24,17 +24,38 @@ if (isset($_GET["inscription"])) {
     if(
         !isset($passwordErrorMessage) &&
         !isset($confirmPasswordErrorMessage)
-    ){
-        $pdoImportUsers = $pdo->prepare('INSERT INTO users (firstName, email, mdp, pseudo) VALUES(:firstName, :email, :mdp, :pseudo)');
+    ){ 
+        try {
+            $pdoImportUsers = $pdo->prepare('INSERT INTO users (firstName, email, mdp, pseudo) VALUES(:firstName, :email, :mdp, :pseudo)');
 
-        $pdoImportUsers->execute([
-            ":firstName" => $prenom,
-            ":mail" => $mail,
-            ":mdp" => password_hash($password, CRYPT_SHA256),
-            ":pseudo" => $pseudo,
-        ]);
+            $pdoImportUsers->execute([
+                ":firstName" => $prenom,
+                ":email" => $mail,
+                ":mdp" => password_hash($password, CRYPT_SHA256),
+                ":pseudo" => $pseudo,
+            ]);
+        } catch (PDOException $e) {
+            // var_dump($e);
+            if ($e->errorInfo[1] == 1062) {
+
+                // $uniqueErrorMessage = 'Votre email ou votre pseudo est déjà utilisé';
+
+                if (strpos($e->getMessage(), 'email') !== false) {
+                    $uniqueErrorMail = "L'Email est déjà utilisé.";
+                } 
+
+                if (strpos($e->getMessage(), 'pseudo') !== false) {
+                    $uniqueErrorPseudo  = "Le pseudo est déjà utilisé.";
+                }   
+            } 
+        }
+
+        if (!isset($uniqueErrorMail) && !isset($uniqueErrorMail)) {
+            $insertSuccesMessage = 'Votre compte a bien été créé !';
+        }
     }
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -56,14 +77,30 @@ if (isset($_GET["inscription"])) {
     </div>
 
     <form method="GET">
-        <input type="text" id="prenom" placeholder="Prénom" required="required" name="firstName">
+        <input type="text" id="prenom" placeholder="Prénom" required="required" name="firstName" 
+        <?php if (isset($prenom)) :?>
+            value="<?php echo htmlspecialchars($prenom); ?>">
+        <?php endif; ?>
         <label for="prenom"></label>
 
-        <input type="mail" id="mail" placeholder="Email" required="required" name="mail">
+        <input type="mail" id="mail" placeholder="Email" required="required" name="mail"
+        <?php if (isset($mail)) :?>
+            value="<?php echo htmlspecialchars($mail); ?>">
+        <?php endif; ?>
         <label for="mail"></label>
+        <?php if(isset($uniqueErrorMail)):?>
+            <p><?php echo $uniqueErrorMail ?></p>
+        <?php endif; ?>
 
-        <input type="text" id="nom" placeholder="Pseudo" required="required" name="pseudo" minlength="4">
+        <input type="text" id="nom" placeholder="Pseudo" required="required" name="pseudo" minlength="4" 
+        <?php if (isset($pseudo)) :?>
+            value="<?php echo htmlspecialchars($pseudo); ?>">
+        <?php endif; ?>
         <label for="nom"></label>
+        <label for="mail"></label>
+        <?php if(isset($uniqueErrorPseudo)):?>
+            <p><?php echo $uniqueErrorPseudo ?></p>
+        <?php endif; ?>
 
         <input type="password" id="motDePasse" placeholder="Mot de passe" required="required" name="password" minlength="8">
         <label for="motDePasse"></label>
@@ -79,7 +116,11 @@ if (isset($_GET["inscription"])) {
             
         <div id="form-inscription">
             <input type="submit" value="Inscription" id="boutonInscription" name="inscription">
+            <?php if(isset($insertSuccesMessage)):?>
+            <p><?php echo $insertSuccesMessage ?></p>
+        <?php endif; ?>
         </div>
+
 
 
 

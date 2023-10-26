@@ -21,3 +21,7 @@ function connectToDbAndGetPdo(): object
         echo 'La connexion à la base de données a échouée.';
     }
 }
+
+
+
+
