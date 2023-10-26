@@ -2,7 +2,7 @@
 require_once 'utils/common.php';
 include SITE_ROOT . 'utils/database.php';
 
-$passwordPattern = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$/';
+$passwordPattern = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*-_]).{8,}$/';
 $pdo = connectToDbAndGetPdo();
 
 if (isset($_GET["inscription"])) {
