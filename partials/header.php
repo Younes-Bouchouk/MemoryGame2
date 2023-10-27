@@ -14,7 +14,7 @@ if (!empty($_SESSION['userId'])) {
     $pseudoOfUserConnected = strtoupper($pseudoUserConnected->pseudo);
 
 } else {
-    $pseudoOfUserConnected = "MON COMPTE";
+    // $pseudoOfUserConnected = "MON COMPTE";
 }
 
 ?>
@@ -27,7 +27,11 @@ if (!empty($_SESSION['userId'])) {
             <a href= "<?php echo PROJECT_FOLDER ?>games/memory/scores.php">SCORES</a>
             <a href= "<?php echo PROJECT_FOLDER ?>contact.php">NOUS CONTACTER</a>
             <a href= "<?php echo PROJECT_FOLDER ?>login.php">CONNEXION</a>
-            <a href= "<?php echo PROJECT_FOLDER ?>myAccount.php"> <?php echo $pseudoOfUserConnected ;?> </a>
+            <a href= "<?php echo PROJECT_FOLDER ?>myAccount.php"> <?php if(isset($pseudoOfUserConnected)):?>
+                                                                <p><?php echo $pseudoOfUserConnected ?></p>
+                                                            <?php endif; ?> </a>
+            <!-- <echo "<a href='$url'>$texte_du_lien</a>" -->
+
 
 
         </nav>

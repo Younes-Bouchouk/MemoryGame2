@@ -52,6 +52,17 @@ if (isset($_GET["inscription"])) {
 
         if (!isset($uniqueErrorMail) && !isset($uniqueErrorMail)) {
             $insertSuccesMessage = 'Votre compte a bien été créé !';
+ 
+            $pdoSelectId = $pdo->prepare('SELECT id FROM users WHERE email = :mail');            
+            $pdoSelectId->execute([":mail" => $mail]);
+            $infosOfUser = $pdoSelectId->fetch();
+
+            $idNewUser = $infosOfUser->id;
+
+            $_SESSION['userId'] = $idNewUser ;
+
+            header("Location: index.php");
+            exit;
         }
     }
 }

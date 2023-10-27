@@ -189,3 +189,24 @@ nav a:nth-child(6)::after {
     text-align: center;
     cursor: pointer;
 }
+
+#formDisconnect {
+    align-self: self-end;
+}
+
+#disconnectBtn{
+    background-color: #eb9123;
+    cursor: pointer; 
+    color: white;
+    font-weight: bold;
+    margin: 20px 0;
+    width: 145px;
+    height: 40px;
+    border: 0;
+    border-radius: 5px;
+    align-self: self-end;
+}
+
+#disconnectBtn:hover{
+    background-color: red ;
+}

@@ -23,10 +23,14 @@
                 if ( password_verify($password, $mdp) ) {
                     $_SESSION['userId'] = $idUser ;
                     $userConnectedMessage = "Bonjour ". $firstName . ", vous êtes bien connecté !";
+                    header("Location: myAccount.php");
+                    exit;
 
                 } elseif ($password == $mdp){
                     $_SESSION['userId'] = $idUser ;
                     $userConnectedMessage = "Bonjour ". $firstName . ", vous êtes bien connecté !";
+                    header("Location: myAccount.php");
+                    exit;
 
                 } else {
                     echo("Le mdp est mauvais");
@@ -60,7 +64,7 @@
     </div>
 
 
-    <form method="POST">
+    <form method="POST" >
         <input type="email", id="mail" placeholder="Email" required="required" name="mail">
         <label for="mail"></label>
 

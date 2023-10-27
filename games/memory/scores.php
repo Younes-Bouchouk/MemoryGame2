@@ -47,7 +47,7 @@
         <h1>SCORES</h1>
     </div>
     
-    <form method="get">
+    <form method="get" id="requestScore">
         <input type="search" placeholder="Rechercher" id="searchPseudo" name="search">
         <input type='submit' value='enter' id='searchBtn' name='searchBtn'>
     </form>
