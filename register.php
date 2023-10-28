@@ -88,7 +88,7 @@ if (isset($_GET["inscription"])) {
     </div>
 
     <form method="GET">
-        <input type="text" id="prenom" placeholder="Prénom" required="required" name="firstName" 
+        <input type="text" id="prenom" placeholder="Prénom" required="required" name="firstName"
         <?php if (isset($prenom)) :?>
             value="<?php echo htmlspecialchars($prenom); ?>">
         <?php endif; ?>
@@ -127,6 +127,8 @@ if (isset($_GET["inscription"])) {
             
         <div id="form-inscription">
             <input type="submit" value="Inscription" id="boutonInscription" name="inscription">
+            <a href="<?php echo PROJECT_FOLDER ?>login.php">Déjà un compte ? Connectez vous</a>
+
             <?php if(isset($insertSuccesMessage)):?>
             <p><?php echo $insertSuccesMessage ?></p>
         <?php endif; ?>

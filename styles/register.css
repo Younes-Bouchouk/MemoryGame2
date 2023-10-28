@@ -41,6 +41,15 @@ form{
 #form-inscription {
     width: 550px;
     max-width: 100% ;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+}
+
+#form-inscription a {
+    text-decoration: none;
+    color: white;
 }
 
 input{

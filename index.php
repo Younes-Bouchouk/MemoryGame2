@@ -124,7 +124,7 @@
         <img id="hr" src="assets/hr.JPG" alt="">
         <div id="profils">
             <div class="profil">
-                <img class="pdp" src="./assets/pdp_younes.gif" alt="">
+                <img class="pdp" src="./assets/pdp_younes2.gif" alt="">
                 <h3>YOUNÈS</h3>
                 <h4>Web Designer</h4>
                 <div class="rs">

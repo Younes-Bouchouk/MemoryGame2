@@ -27,6 +27,28 @@
 
     // ---------
 
+    $uploadDir = SITE_ROOT.'/userFiles/';
+
+    $allowedExtensions = array('jpg','jpeg', 'png', 'gif');
+
+    if (isset($_POST['avatar'])) {
+
+        if (isset($_FILES['avatar']) && $_FILES['avatar']['error'] === UPLOAD_ERR_OK){
+            $file =$_FILES['avatar'];
+            $fileExtension = pathinfo($file['name'], PATHINFO_EXTENSION);
+            
+            if (in_array(strtolower($fileExtension),$allowedExtensions)){
+                $userId = $_SESSION['userId'] ;
+                $fileName = $userId . '_profile.jpg';
+                $filePath = $uploadDir . $fileName ;
+                move_uploaded_file($_FILES['avatar']['tmp_name'],$filePath);
+            }
+            else {
+                $imgErrorMessage = "Frero choisis une image aussi j'suis pas ton pote";
+            }
+        }
+    }
+
     
 
 
@@ -72,11 +94,14 @@
     <div id="container">
         <div id="profil">
             <div id="pdp">
-                <img src="userFiles/avatar.png" alt="" >
-                <form method="post"> 
+                <img src="<?= PROJECT_FOLDER. 'userFiles/'. $_SESSION['userId'] . '_profile.jpg'  ?>" alt="pdp" >
+                <form method="post" enctype="multipart/form-data"> 
                     <label for="file" class="label-file"><img id="avatar" src="assets/logo_modify.png" alt=""></label>
                     <input id="file" class="input-file" type="file" name="avatar">
-                    <input type="submit" value="Télécharger l'image" name="submit">
+                    <input type="submit" value="Télécharger l'image" name="upload">
+                    <?php if(isset($imgErrorMessage)):?>
+                        <p><?php echo $imgErrorMessage?></p>
+                    <?php endif; ?> </a>
                 </form>
             </div>        
 

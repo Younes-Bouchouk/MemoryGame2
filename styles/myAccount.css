@@ -38,9 +38,11 @@ nav a:nth-child(6)::after {
 
 #pdp img {
     width: 150px;
+    height: 150px;
     border-radius: 50%;
     border: 2px solid white;
     margin: 10px;
+    object-fit: cover;
 }
 
 #profil #avatar {
