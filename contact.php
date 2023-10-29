@@ -56,6 +56,6 @@
 
 </body>
 
-<script src="../components/hamburger.js"></script>
+<script src="scripts/app.js"></script> 
 
 </html>

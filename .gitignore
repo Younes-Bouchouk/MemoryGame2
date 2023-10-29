@@ -1,6 +1,6 @@
 .DS_Store 
 ._*
-*.mp4
+# *.mp4
 # *.webm
 # *.gif
 # *.png

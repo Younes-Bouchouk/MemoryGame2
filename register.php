@@ -61,11 +61,22 @@ if (isset($_GET["inscription"])) {
 
             $_SESSION['userId'] = $idNewUser ;
 
+            // ---- Ajout de la Pdp ----     
+            $userId = $_SESSION['userId'];
+
+            $userDir = 'userFiles/' . $userId . '/';
+            if (!file_exists($userDir)) {
+                mkdir($userDir, 0777, true);
+            }
+
+            copy("assets/avatar.png", $userDir . "profile.jpg");            
+
             header("Location: index.php");
             exit;
         }
     }
 }
+
 
 ?>
 <!DOCTYPE html>
@@ -141,6 +152,7 @@ if (isset($_GET["inscription"])) {
 
     <?php require_once SITE_ROOT . 'partials/footer.php'; ?>
 </body>
-<script src="../components/hamburger.js"></script>
+
+<script src="scripts/app.js"></script> 
 
 </html>

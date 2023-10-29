@@ -31,7 +31,7 @@
 
     <table>
         
-        <th>Jeu</th> <th>Joueur</th> <th>Difficulté</th> <th>Score</th>
+        <th>Joueur</th> <th>Jeu</th> <th>Difficulté</th> <th>Score</th>
 
         <?php  
             if (!isset($_GET["searchBtn"]) || empty($_GET["search"])) {
@@ -50,6 +50,6 @@
 
 </body>
 
-    <script src="../../scripts/app.js"></script> 
+<script src="../../scripts/app.js"></script> 
 
 </html>

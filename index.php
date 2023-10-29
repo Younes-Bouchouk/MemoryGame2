@@ -21,7 +21,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="./css/header.css"> -->
     <link rel="stylesheet" href="styles/header.css">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/chat.css">    
@@ -170,6 +169,6 @@
 
 </body>
 
-    <script src="scripts/app.js"></script> 
+<script src="scripts/app.js"></script> 
 
 </html>

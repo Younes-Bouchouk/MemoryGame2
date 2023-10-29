@@ -3,72 +3,52 @@
     require_once 'utils/common.php';
     require_once SITE_ROOT. 'utils/database.php';
 
-    if (isset($_GET["d"])){
-        unset($_SESSION['userId']);
-        header("Location: index.php");
-        exit;
+    $userInfos = selectUserInfos();
 
+    $name = $userInfos[0];
+    $pseudo = $userInfos[1];
+    $mail = $userInfos[2];
+    $inscription = $userInfos[3];
+
+    if (isset($_GET["disconnect"])){
+        disconnectUser();
     };
 
-    $pdo = connectToDbAndGetPdo();
-
-    $pdoSelectUsers = $pdo->prepare('SELECT firstName, pseudo, email, inscription FROM users WHERE id = :userId ');
-    $pdoSelectUsers->execute([":userId" => $_SESSION['userId']]); 
-    $infosUserConnected = $pdoSelectUsers->fetchAll();
-
-    if (isset($infosUserConnected)) {       
-        foreach ($infosUserConnected as $row) {
-        $firstName = $row->firstName;
-        $pseudo = $row->pseudo;
-        $email = $row->email;
-        $inscription = $row->inscription;
-        }
-    };
-
-    // ---------
-
-    $uploadDir = SITE_ROOT.'/userFiles/';
-
-    $allowedExtensions = array('jpg','jpeg', 'png', 'gif');
-
-    if (isset($_POST['avatar'])) {
-
-        if (isset($_FILES['avatar']) && $_FILES['avatar']['error'] === UPLOAD_ERR_OK){
-            $file =$_FILES['avatar'];
-            $fileExtension = pathinfo($file['name'], PATHINFO_EXTENSION);
+    // ---------  Photo de profil
             
-            if (in_array(strtolower($fileExtension),$allowedExtensions)){
-                $userId = $_SESSION['userId'] ;
-                $fileName = $userId . '_profile.jpg';
-                $filePath = $uploadDir . $fileName ;
-                move_uploaded_file($_FILES['avatar']['tmp_name'],$filePath);
-            }
-            else {
-                $imgErrorMessage = "Frero choisis une image aussi j'suis pas ton pote";
+        $uploadDir = SITE_ROOT . '/userFiles/';
+
+        $allowedExtensions = array('jpg', 'jpeg', 'png', 'gif', 'avif');
+        
+        if (isset($_POST['upload'])) {
+        
+            if (isset($_FILES['avatar']) && $_FILES['avatar']['error'] === UPLOAD_ERR_OK) {
+                $file = $_FILES['avatar'];
+                $fileExtension = pathinfo($file['name'], PATHINFO_EXTENSION);
+        
+                if (in_array(strtolower($fileExtension), $allowedExtensions)) {
+                    $userId = $_SESSION['userId'];
+        
+                    // Crée le répertoire s'il n'existe pas
+                    $userDir = $uploadDir . $userId . '/';
+                    if (!file_exists($userDir)) {
+                        mkdir($userDir, 0777, true);
+                    }
+        
+                    $fileName = 'profile.jpg';
+                    $filePath = $userDir . $fileName;
+                    move_uploaded_file($_FILES['avatar']['tmp_name'], $filePath);
+                } else {
+                    $imgErrorMessage = "Frero choisis une image aussi j'suis pas ton pote";
+                }
             }
         }
-    }
 
     
 
 
 
     // ---------
-
-    if(isset($_GET["submit"])) {
-        echo("T'as appuyer sur le boutons");
-        if (isset($_FILES['avatar']['tmp_name'])) {
-            echo("J'ai pris ton image");
-            $retour = copy($_FILES['avatar']['tmp_name'], $_FILES['avatar']['name']);
-            if($retour) {
-                echo '<p>La photo a bien été envoyée.</p>';
-                echo '<img src="' . $_FILES['avatar']['name'] . '">';
-            }
-        }
-    }
-
-
-
 
 ?>
 
@@ -94,7 +74,7 @@
     <div id="container">
         <div id="profil">
             <div id="pdp">
-                <img src="<?= PROJECT_FOLDER. 'userFiles/'. $_SESSION['userId'] . '_profile.jpg'  ?>" alt="pdp" >
+                <img src="<?= $pdpPath ?>" alt="pdp" >
                 <form method="post" enctype="multipart/form-data"> 
                     <label for="file" class="label-file"><img id="avatar" src="assets/logo_modify.png" alt=""></label>
                     <input id="file" class="input-file" type="file" name="avatar">
@@ -106,25 +86,23 @@
             </div>        
 
             <div id="details">
-                <?php echo( "<h1>".$firstName."</h1> "); ?>
-                <h2>Crée le <?php echo( "<span>".$inscription."</span> "); ?></h2>
+                <?php echo $name ?>
+                <h2>Crée le <?php echo $inscription ?></h2>
             </div>
-            <!--<p id="status">
-                " Wsh la team, bien ? Sah je kiff les jeux de mémoire, je mémorise tah les fou. Dans ma famille on y joue de père en fils. Mon grand-père est un ex champion de MemoryGame, il a gagné plein de trophées. Je compte bien prendre la relève étant donnée que mon père lui n'a pas voulu continué "
-            </p>-->
         </div>
 
         <div id="informations">
 
             <div id="pseudo">
                 <p>Pseudo :</p>
-                <?php echo( "<p>".$pseudo."</p> "); ?>
+                <?php // echo( "<p>".$pseudo."</p> "); ?>
+                <?php echo $pseudo ?>
                 <a href="<?php SITE_ROOT ?>changeInfos/newPseudo.php">Modifier</a>
             </div>
 
             <div id="mail">
                 <p>Mail :</p>
-                <?php echo( "<p>".$email."</p> "); ?>
+                <?php echo $mail ?>
                 <a href="<?php SITE_ROOT ?>changeInfos/newEmail.php">Modifier</a>
             </div>
 
@@ -141,7 +119,7 @@
             </div>
             
             <form id="formDisconnect" method="get">
-                <input type="submit" id="disconnectBtn" name="d" value="Deconnexion"></input>
+                <input type="submit" id="disconnectBtn" name="disconnect" value="Deconnexion"></input>
             </form>
 
         </div>
@@ -153,6 +131,6 @@
     
 </body>
     
-    <script src="../components/hamburger.js"></script>
+<script src="scripts/app.js"></script> 
 
 </html>
