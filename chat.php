@@ -25,7 +25,7 @@
             <p class="other"><?= $message->messages ?></p>
             
             <?php
-
+               
             }
 
         }   
@@ -53,6 +53,11 @@
 
             <p class="other">Je FF t'es trop un lâche</p>
              -->
+            <?php $urlGif = "https://api.thecatapi.com/v1/images/search?mime_types=gif";
+                $file =file_get_contents($urlGif);
+                $futurImageGif = json_decode($file);
+            ?>
+            <img src="<?=$futurImageGif[0]->url?>" alt="">
         </div>
 
         <div id="envoyer-message">
@@ -73,6 +78,7 @@
                 }
             ?>
             </form>
+
         </div>
 
 
