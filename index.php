@@ -169,6 +169,6 @@
 
 </body>
 
-<script src="scripts/app.js"></script> 
+<script src="scripts/chat.js"></script> 
 
 </html>

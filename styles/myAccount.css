@@ -39,6 +39,11 @@ nav a:nth-child(6)::after {
     padding-top: 30px;
 }
 
+form {
+    display: flex;
+    justify-content: center;
+}
+
 #pdp img {
     width: 150px;
     height: 150px;
@@ -50,7 +55,7 @@ nav a:nth-child(6)::after {
 
 #profil #avatar {
     position: absolute;
-    bottom: 10px;
+    bottom: 30px;
     left: 125px;
     width: 30px;
     height: 30px;
@@ -62,12 +67,21 @@ nav a:nth-child(6)::after {
     cursor: pointer;
 }
 
-#avatar {
-    width: 30px ;
-}
-
 #file {
     display: none;
+}
+
+#upload {
+    padding: 3px 5px;
+    border: 0;
+    border-radius: 5px;
+    color: black;
+    background-color: white;
+    cursor: pointer;
+}
+
+#upload:hover {
+    background-color: lightslategrey;
 }
 
 #details {

@@ -78,7 +78,7 @@
                 <form method="post" enctype="multipart/form-data"> 
                     <label for="file" class="label-file"><img id="avatar" src="assets/logo_modify.png" alt=""></label>
                     <input id="file" class="input-file" type="file" name="avatar">
-                    <input type="submit" value="Télécharger l'image" name="upload">
+                    <input type="submit" value="Appliquer l'image" name="upload" id="upload">
                     <?php if(isset($imgErrorMessage)):?>
                         <p><?php echo $imgErrorMessage?></p>
                     <?php endif; ?> </a>

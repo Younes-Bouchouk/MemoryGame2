@@ -53,6 +53,74 @@ function disconnectUser() { // Deconnecter un utilisateur
 }
 
 // ----------------------------------------------------------------
+// ----------------- FONCTIONS POUR LA CHAT BOX -------------------
+// ----------------------------------------------------------------
+
+function selectMessages() {
+
+    $pdo = connectToDbAndGetPdo();
+    $pdoRequeteMessage = $pdo->prepare('SELECT messages, pseudo, userId, timeMessage  
+                                        FROM messages 
+                                        INNER JOIN users 
+                                        ON users.id = messages.userId 
+                                        ORDER BY timeMessage ASC'
+                                        );            
+    $pdoRequeteMessage->execute();
+    $allMessages = $pdoRequeteMessage->fetchAll();
+
+    return $allMessages;
+}
+
+function sendMessage() {
+
+    $pdo = connectToDbAndGetPdo();
+    $pdoEnvoieMessage = $pdo->prepare('INSERT INTO messages (gameId, userId, messages) 
+                                        VALUES  (1, :idDeMoi, :messageQueJenvoie)');            
+    $pdoEnvoieMessage->execute([":idDeMoi" => $_SESSION["userId"],
+                                ":messageQueJenvoie" => $_POST["contenu"]]);
+
+    unset($_POST['contenu']);
+
+}
+
+function displayMessages($allMessages) {
+
+    $result = "";
+
+    foreach($allMessages as $message){
+        $contenu = $message->messages;
+        $pseudo = $message->pseudo;
+        $userId = $message->userId;
+        $time = $message->timeMessage;
+
+        $pdpPath = PROJECT_FOLDER. 'userFiles/'. $userId . '/' . 'profile.jpg';
+        
+        if(isset($_SESSION["userId"]) && $userId == $_SESSION["userId"]){
+            $result .= "<div class ='me'>
+                            <div class='infos'>
+                                <section><span> " . $time . "</span></section>
+                            </div>
+                            <p> ". $contenu . "</p>
+                        </div>"; 
+
+        }else{
+
+        
+            $result .= "<div class ='other'>
+                            <div class='infos'>
+                                <img src=" . $pdpPath . "> 
+                                <section> " . $pseudo . " 
+                                <span> " . $time . "</span></section>
+                            </div>
+                            <p> ". $contenu . "</p>
+                        </div>";  
+        }
+    }   
+
+    return $result;
+}
+
+// ----------------------------------------------------------------
 // -------------- FONCTIONS DANS LA PAGE scores.php ---------------
 // ----------------------------------------------------------------
 

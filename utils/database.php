@@ -7,7 +7,7 @@ function connectToDbAndGetPdo(): object
 
     $dsn = "mysql:dbname=$dbname;host=$host;charset=utf8";
     $user = 'root';
-    $pass = '';
+    $pass = 'root';
 
     $driver_options = [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,

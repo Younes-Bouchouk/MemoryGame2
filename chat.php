@@ -1,35 +1,26 @@
+<?php 
+
+    require_once 'utils/common.php'; 
+
+    if (isset($_POST['sendMessage']) && !empty($_POST['contenu'])) {
+        echo "djsdsqjndqshdnasoihdnsqidnadnasdiuazndaziundsqhdnqsdhsndaidnofadhnazhdnazdahzndhsdadza";
+        sendMessage();
+        displayMessages(selectMessages());
+    }
+    
+?>
+
 <button id="chatbox-close" type="menu"></button>
 
     <div id="chatbox">
 
-        <div id="screen">
-    <?php  
+    <div id="screen">
+        <?php
+       
+            echo displayMessages(selectMessages());  
+        
+        ?>
 
-
-    $pdo = connectToDbAndGetPdo();
-
-        $pdoRequeteMessage = $pdo->prepare('SELECT messages, pseudo, userId  FROM messages INNER JOIN users ON users.id = messages.userId ORDER BY timeMessage ASC');            
-        $pdoRequeteMessage->execute();
-        $messages = $pdoRequeteMessage->fetchAll();
-
-        foreach($messages as $message){
-            
-            if($message->userId == $_SESSION["userId"]){
-                ?>
-                <p class="me"><?=$message->messages ?></p>
-
-                <?php
-            }else{
-                ?>
-                <div class="sender"><img src="<?php echo PROJECT_FOLDER ;?>assets/pdp_younes.webp" alt=""> <section><?= $message->pseudo ?><span>- 18h45</span></section></div>
-            <p class="other"><?= $message->messages ?></p>
-            
-            <?php
-               
-            }
-
-        }   
-    ?>
 
 
             <!-- <p class="me">Y'a qui ?</p>
@@ -56,27 +47,21 @@
             <?php $urlGif = "https://api.thecatapi.com/v1/images/search?mime_types=gif";
                 $file =file_get_contents($urlGif);
                 $futurImageGif = json_decode($file);
+
+                
             ?>
-            <img src="<?=$futurImageGif[0]->url?>" alt="">
+            <img id="gifCat" src="<?=$futurImageGif[0]->url?>" alt="">
+
+            
+
         </div>
 
         <div id="envoyer-message">
             <form method="POST">
 
-            <input type="text" name="contenu" id="message" placeholder="Entrez votre message" wrap="hard">
-            <label for="message"></label>
-            <input type="submit" id="send" name="sendMessages">
-            <?php 
-                if(isset($_POST["sendMessages"])){
-                    if(!empty($_POST["contenu"])){
+                <input type="text" name="contenu" id="message" placeholder="Entrez votre message" wrap="hard">
+                <input type="submit" id="send" name="sendMessage">
 
-                        $pdoEnvoieMessage = $pdo->prepare('INSERT INTO messages (gameId, userId, messages) VALUES  (1, :idDeMoi, :messageQueJenvoie)');            
-                        $pdoEnvoieMessage->execute([":idDeMoi" => $_SESSION["userId"],
-                                                     ":messageQueJenvoie" => $_POST["contenu"]]);
-                    }
-
-                }
-            ?>
             </form>
 
         </div>

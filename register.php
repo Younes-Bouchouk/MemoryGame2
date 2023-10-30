@@ -61,7 +61,8 @@ if (isset($_GET["inscription"])) {
 
             $_SESSION['userId'] = $idNewUser ;
 
-            // ---- Ajout de la Pdp ----     
+            // ---------- Ajout de la Pdp ----------  
+               
             $userId = $_SESSION['userId'];
 
             $userDir = 'userFiles/' . $userId . '/';

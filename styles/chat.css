@@ -1,3 +1,4 @@
+
 #chatbox-close {
     z-index: 11;
     background-image: url(../assets/chatbox.png);
@@ -42,6 +43,7 @@
     max-width: 400px;
     height: 500px;
     transition: 0.7s ease;
+    color: black;
 }
 
 .chatbox-visible {
@@ -55,7 +57,7 @@
     height: 90%;
     margin: 10px auto 0 ;
     /* background-color: rgba(255, 255, 255, 0.575); */
-    padding: 5px;
+    padding: 5px 20px;
     overflow-y: scroll;
     scrollbar-color: grey lightgrey;
     scrollbar-width: thin;
@@ -63,14 +65,34 @@
     flex-direction: column;
 }
 
-.sender {
+.me {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.other {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.infos {
     display: flex;
     align-items: center;
     color: black;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+/* 
+.me .infos {
 
-.sender img {
+}
+
+.other .infos {
+
+} */
+
+.infos img {
     width: 30px;
     border-radius: 50%;
     margin-bottom: 2px;
@@ -80,14 +102,14 @@
     object-fit: cover; /*  Et je l'étire verticalement pour pas quelle soit déformé */
 }
 
-.sender section {
+.infos section {
     font-size: 15px;
     margin: 0 0 0 5px;
     align-self: flex-end;
     padding-bottom: 5px;
 }
 
-.sender section span {
+.infos section span {
     align-self: flex-end;
     font-size: 10px;
     margin-left: 5px;
@@ -98,21 +120,21 @@
 #screen p {
     color: black;
     font-size: 14px;
-    padding: 5px;
+    padding: 8px 12px;
     width:fit-content;
     max-width: 60%;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     text-align: justify;
 }
 
-.me {
-    justify-content: center;
+.me p {
     background-color: skyblue;
     border-radius: 10px 10px 0 10px;
+    display: flex;
     align-self: self-end;
 }
 
-.other {
+.other p {
     background-color: lightgray;
     border-radius: 10px 10px 10px 0px;
     align-self: self-start;
@@ -127,16 +149,23 @@
     color: black;
     background-color: white;
     display: flex;
+}
 
+#envoyer-message form {
+    width: 100%;
 }
 
 #message {
     z-index: 1;
     border: none;
-    width: 80%;
+    width: 79%;
     height: 100%;
     padding: 0 5px;
     color: #3f3f3f;
+}
+
+#gifCat {
+    width: 100px;
 }
 
 #send {
@@ -149,7 +178,7 @@
     font-weight: bold;
     background-color: white;
     height: 100%;
-    width: 20%;
+    width: 19%;
 }
 
 #send:hover {
