@@ -25,6 +25,9 @@
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/chat.css">    
     <link rel="stylesheet" href="styles/footer.css">
+
+    <script src="scripts/app.js" defer></script> 
+    <script src="scripts/chat.js" defer></script> 
     <title>MemoryGame - Accueil</title>
 </head>
 
@@ -168,7 +171,5 @@
     
 
 </body>
-
-<script src="scripts/chat.js"></script> 
 
 </html>

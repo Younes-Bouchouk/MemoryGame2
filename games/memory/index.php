@@ -10,28 +10,65 @@ require_once '../../utils/common.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MemoryGame - Jouer</title>
-    <link rel="stylesheet" href="../../styles/chat.css"> 
-    <link rel="stylesheet" href="<?php echo PROJECT_FOLDER ; ?>styles/game.css">
+    <link rel="stylesheet" href="<?php echo PROJECT_FOLDER ; ?>styles/levels.css">
+    <link rel="stylesheet" href="<?php echo PROJECT_FOLDER ; ?>styles/themes.css">
+    <link rel="stylesheet" href="<?php echo PROJECT_FOLDER ; ?>styles/chat.css"> 
+    <link rel="stylesheet" href="<?php echo PROJECT_FOLDER ; ?>styles/memory.css">
+
+    <script src="../../scripts/game.js" defer></script>
+    <script src="../../ scripts/chat.js" defer></script> 
+
 </head>
 
 <body>
 
-    <div class="quatre">   
+    <div id="levelPage">
 
-        <div id="hud">
+        <div class="container">
 
-            <form action="<?php echo PROJECT_FOLDER ;?>games/memory/scores.php">
-                <input type="submit" value="Retour" id="back">
-            </form>
-                <input type="submit" value="Pause" id="pause">
-                <p id="scores">scores : 0 secondes</p>
-                <!--<p id="HorlogeEtDate"> 15h17 : 13/10/2023</p> -->
+            <button class="btnLevel" id="btnNovice" >Novice - 4×4</button>
+
+            <button class="btnLevel" id="btnFacile" >Facile - 5×6</button>
+
+            <button class="btnLevel" id="btnIntermediaire" >Intermediaire - 8×8</button>
+
+            <button class="btnLevel" id="btnDifficile" >Difficile - 12×12</button>
+
+            <button class="btnLevel" id="btnExtreme" >Extrême 20×20</button>
 
         </div>
 
-        
-        
-        <table>  
+    </div>
+
+    <div id="themePage">
+
+        <div class="container">
+
+            <div class="ligne1">
+                <button class="btnTheme" id="themeFuturiste"></button>
+                <button class="btnTheme" id="themeMagic"></button>
+            </div>
+
+            <div class="ligne2">
+                <button class="btnTheme" id="themeHeathstone"></button>
+                <button class="btnTheme" id="themeClash"></button>
+            </div>    
+
+        </div>
+    </div>
+
+    <div id="gameArena">   
+
+        <div id="hud">
+
+            <p id="score"><span>0</span>sec</p> 
+
+            <button id="pause"><span></span><span></span></button>
+            <a href="../../index.php"><button id="quit">QUITTER</button></a>
+
+        </div>
+       
+        <table id="novice">  
             <tr>
                 <td><div class="carte"></div></td>
                 <td><div class="carte"></div></td>
@@ -57,12 +94,12 @@ require_once '../../utils/common.php';
                 <td><div class="carte"></div></td>
             </tr>
         </table>
+        
     </div>
 
     <?php require_once SITE_ROOT.'chat.php'; ?>
 
+
 </body>
-
-    <script src="../../scripts/chat.js"></script> 
-
+ 
 </html>

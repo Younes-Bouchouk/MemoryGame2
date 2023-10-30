@@ -8,9 +8,10 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     height: 100vh;
     width: 100vw;
+    color: white;
 }
 
-.douze, .huit, .quatre {
+.douze, .huit, #quatre {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -29,7 +30,7 @@ table {
     height: 150px;
     background-size: cover;
     background-position: center;
-    background-image: url(../assets/Theme_futuriste/dos.png);
+    background-image: url(../assets/deck_clashRoyale/dos.png);
     margin: 10px;
 }
 
@@ -56,14 +57,14 @@ table {
     background-size: cover;
 }
 
-.quatre{
+#quatre{
     background-image: url(../assets/Theme_futuriste/background.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     height: 100%;
 }
 
-#back, #pause{
+#back, #pause, #exit{
   background-color: #ec9123;
   color: lightgray;
   width: 150px;

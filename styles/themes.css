@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} 
+
+body {
+    background-color: #0f0e2e;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* ========================================================= */
+/* ================== PAGE CHOIX DU THÈME ================== */
+/* ========================================================= */
+
+#themePage {
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: #0f0e2e;    
+}
+
+.ligne1{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ligne2{
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btnTheme{
+    width: 400px;
+    height: 300px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 20px;
+
+    border: 1px solid white;
+    cursor: pointer;
+}
+
+.btnTheme:hover{
+    box-shadow: 0 0 40px 10px #ec9123;
+}
+
+#themeFuturiste {
+    background-image: url('../assets/deck_futuriste/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+#themeMagic {
+    background-image: url('../assets/deck_magic/background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#themeHeathstone {
+    background-image: url('../assets/deck_hearthstone/background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+#themeClash {
+    background-image: url('../assets/deck_clashRoyale/theme.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+img {
+    width: 100%;
+    height: 100px;
+}
+
+#the
+
+.hover img:hover{
+    box-shadow: 0 0 40px rgb(255, 0, 162);
+}
+
+@media screen and (max-width: 900px) {
+    .ligne1, .ligne2 {
+        flex-direction: column;
+    }
+
+    
+}

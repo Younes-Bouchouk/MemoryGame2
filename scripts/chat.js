@@ -14,7 +14,7 @@ chatBtn.addEventListener('click', function() {
     screen.scrollTop= screen.scrollHeight;
 })
 
-// --- Bouton Send ----------
+// ---------- Bouton Send ----------
 
 var sendBtn = document.getElementById("send");
 var imgSendBtn = document.querySelector('#send>img')
