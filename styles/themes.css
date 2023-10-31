@@ -60,13 +60,13 @@ body {
 }
 
 #themeMagic {
-    background-image: url('../assets/deck_magic/background.png');
+    background-image: url('../assets/deck_magic/background.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 #themeHeathstone {
-    background-image: url('../assets/deck_hearthstone/background.png');
+    background-image: url('../assets/deck_hearthstone/background.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

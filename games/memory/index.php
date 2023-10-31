@@ -55,45 +55,18 @@ require_once '../../utils/common.php';
             </div>    
 
         </div>
-    </div>
+    </div> 
 
     <div id="gameArena">   
 
         <div id="hud">
 
-            <p id="score"><span>0</span>sec</p> 
+            <p id="score"><span id="time">0</span>sec</p> 
 
-            <button id="pause"><span></span><span></span></button>
-            <a href="../../index.php"><button id="quit">QUITTER</button></a>
+            <button id="pause" onclick="toggle()"><span></span><span></span></button>
+            <a href="../../index.php"><button id="quit">QUIT</button></a>
 
         </div>
-       
-        <table id="novice">  
-            <tr>
-                <td><div class="carte"></div></td>
-                <td><div class="carte"></div></td>
-                <td><div class="carte"></div></td>
-                <td><div class="carte"></div></td>
-            </tr>
-            <tr>
-                <td><div class="carte"></div></td>
-                <td><div class="carte"></div></td>
-                <td><div class="carte"></div></td>
-                <td><div class="carte"></div></td>
-            </tr>
-            <tr>
-                <td><div class="carte"></div></td>
-                <td><div class="carte"></div></td>
-                <td><div class="carte"></div></td>
-                <td><div class="carte"></div></td>
-            </tr>
-            <tr>
-                <td><div class="carte"></div></td>
-                <td><div class="carte"></div></td>
-                <td><div class="carte"></div></td>
-                <td><div class="carte"></div></td>
-            </tr>
-        </table>
         
     </div>
 
