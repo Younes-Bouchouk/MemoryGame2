@@ -3,13 +3,13 @@
     require_once 'utils/common.php'; 
 
     if (isset($_POST['sendMessage']) && !empty($_POST['contenu'])) {
-        echo "djsdsqjndqshdnasoihdnsqidnadnasdiuazndaziundsqhdnqsdhsndaidnofadhnazhdnazdahzndhsdadza";
+        echo "d";
         sendMessage();
         displayMessages(selectMessages());
     }
     
 ?>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <button id="chatbox-close" type="menu"></button>
 
     <div id="chatbox">
@@ -17,7 +17,7 @@
     <div id="screen">
         <?php
        
-            echo displayMessages(selectMessages());  
+         echo displayMessages(selectMessages());  
         
         ?>
 
@@ -57,7 +57,7 @@
         </div>
 
         <div id="envoyer-message">
-            <form method="POST">
+            <form method="POST" id="formEnvoieMessage">
 
                 <input type="text" name="contenu" id="message" placeholder="Entrez votre message" wrap="hard">
                 <input type="submit" id="send" name="sendMessage">

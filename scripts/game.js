@@ -1,193 +1,435 @@
+
+// Les pages
+
+let pageLevel = document.getElementById('levelPage');
+let pageTheme = document.getElementById('themePage');
+pageTheme.style.display = 'none';
+let arena = document.getElementById('gameArena');
+let endPage = document.getElementById('end');
+endPage.style.display = 'none';
+
+var tabJeu;
+var tabResultat;
+var sec = 0
+
 // Les Fonctions
 
 function displayTheme() {
-    pageLevel.style.display='none';
-    pageTheme.style.display='block';
-    console.log(level)
+    pageLevel.style.display = 'none';
+    pageTheme.style.display = 'block';
+    console.log(level);
+    tabJeu = genereTableauDepart();
+    tabResultat = genereTableauAleatoire();
 }
 
 function displayMemory() {
-    pageTheme.style.display='none';    
-    console.log(theme)
-    generateGrille(level)
+    pageTheme.style.display = 'none';
+    console.log(theme);
+
+    afficherTableau();
+    start();
 }
 
-function generateGrille() {
+function afficherTableau() {
+    var txt = "";
+    table.style.backgroundImage = "url('" + dirTheme + "background.jpg')";
 
-    var table = document.createElement('table')
+    for (var i = 0; i < tabJeu.length; i++) {
+        txt += "<tr>";
 
-    table.style.backgroundImage = "url(" + dirTheme + "background.jpg)"
+        for (var j = 0; j < tabJeu[i].length; j++) {
+            if (tabJeu[i][j] === 0) {
+                txt += "<td onClick='verif(\"" + i + "-" + j + "\")'> <img style='aspect-ratio: 1 / 2' src='" + dirTheme + "0.png' > </td>";
+            } else {
+                txt += "<td class='card " + (tabJeu[i][j] === 0 ? 'card-back' : '') + "'> <img src='" + getCards(tabJeu[i][j]) + "' > </td>";
+                console.log(tabJeu[i][j]);
+            }
+        }
+        txt += "</tr>";
+    }
+    table.innerHTML = txt;
+}
 
-    arena.appendChild(table)
+function genereTableauDepart() {
+    var tab = [];
 
+    for (var i = 0; i < nbRow; i++) {
+        var ligne = [];
+        for (var j = 0; j < nbCol; j++) {
+            ligne.push(0);
+        }
 
-    for (i=0; i<nbRow; i++){
-        var row1 = document.createElement('tr')
+        tab.push(ligne);
+    }
 
-        table.appendChild(row1)
+    return tab;
+}
 
-        for (j=0; j<nbCol; j++){
+function genereTableauAleatoire() {
+    var tab = [];
+    var nbImagePosition = [];
 
-            var td1 = document.createElement('td')
+    for (var k = 0; k < repet; k++) {
+        nbImagePosition.push(0);
+    }
 
-            row1.appendChild(td1)
+    for (var i = 0; i < nbRow; i++) {
+        var ligne = [];
+        for (var j = 0; j < nbCol; j++) {
+            var fin = false;
+            while (!fin) {
+                var randomImage = Math.floor(Math.random() * repet);
+                if (nbImagePosition[randomImage] < paire) {
+                    ligne.push(randomImage + 1);
+                    nbImagePosition[randomImage]++;
+                    fin = true;
+                }
+            }
+        }
+        tab.push(ligne);
+    }
 
-            td1.classList.add('carte')
+    return tab;
+}
 
-            td1.style.backgroundImage = "url(" + dirTheme + "dos.png)"
+function exists(arr, search) {
+    return arr.some(row => row.includes(search));
+}
+
+function endGame() {
+    var totalEmptyCells = 0;
+
+    for (var i = 0; i < tabJeu.length; i++) {
+        for (var j = 0; j < tabJeu[i].length; j++) {
+            if (tabJeu[i][j] === 0) {
+                totalEmptyCells++;
+            }
         }
     }
 
-    start()
+    if (totalEmptyCells === 0) {
+        return true;
+    } else {
+        console.log('CONTINUE');
+    }
 }
 
-function toggle(){
-    if (pause == false){
-        start()
-        pause = true
+var oldSelection = [];
+var nbAffiche = 0;
+var ready = true;
+
+function verif(card) {
+    if (ready) {
+        nbAffiche++;
+        console.log("nbAffiche =" + nbAffiche);
+        console.log("oldSelection =" + oldSelection);
+
+        var ligne = card.substr(0, 1);
+        var colonne = card.substr(2, 1);
+
+        var currentCard = document.querySelector(`tr:nth-child(${ligne}) td:nth-child(${colonne})`);
+        currentCard.classList.toggle('card-back'); // Bascule la classe card-back pour voir le verso
+
+        tabJeu[ligne][colonne] = tabResultat[ligne][colonne];
+        afficherTableau();
+
+        if (nbAffiche > 1) {
+            ready = false;
+
+            setTimeout(() => {
+                if (tabJeu[ligne][colonne] !== tabResultat[oldSelection[0]][oldSelection[1]]) {
+                    tabJeu[ligne][colonne] = 0;
+                    tabJeu[oldSelection[0]][oldSelection[1]] = 0;
+                }
+                afficherTableau();
+                ready = true;
+                nbAffiche = 0;
+                oldSelection = [ligne, colonne];
+                if (endGame()) {
+                    stop();
+                    insertScore();
+                    displayEndPage();
+                }
+            }, 500);
+        } else {
+            oldSelection = [ligne, colonne];
+        }
     }
-    else {
-        stop()
-        pause = false
-        
+}
+
+function getCards(valeur) {
+    var imgTxt = dirTheme;
+
+    switch (valeur) {
+        case 1:
+            imgTxt += "1.png";
+            break;
+        case 2:
+            imgTxt += "2.png";
+            break;
+        case 3:
+            imgTxt += "3.png";
+            break;
+        case 4:
+            imgTxt += "4.png";
+            break;
+        case 5:
+            imgTxt += "5.png";
+            break;
+        case 6:
+            imgTxt += "6.png";
+            break;
+        case 7:
+            imgTxt += "7.png";
+            break;
+        case 8:
+            imgTxt += "8.png";
+            break;
+        case 9:
+            imgTxt += "9.png";
+            break;
+        case 10:
+            imgTxt += "10.png";
+            break;
+        case 11:
+            imgTxt += "11.png";
+            break;
+        case 12:
+            imgTxt += "12.png";
+            break;
+        case 13:
+            imgTxt += "13.png";
+            break;
+        case 14:
+            imgTxt += "14.png";
+            break;
+        case 15:
+            imgTxt += "15.png";
+            break;
+        case 16:
+            imgTxt += "16.png";
+            break;
+        case 17:
+            imgTxt += "17.png";
+            break;
+        case 18:
+            imgTxt += "18.png";
+            break;
+        case 19:
+            imgTxt += "19.png";
+            break;
+        case 20:
+            imgTxt += "20.png";
+            break;
+        case 21:
+            imgTxt += "21.png";
+            break;
+        case 22:
+            imgTxt += "22.png";
+            break;
+        case 23:
+            imgTxt += "23.png";
+            break;
+        case 24:
+            imgTxt += "24.png";
+            break;
+        case 25:
+            imgTxt += "25.png";
+            break;
+        case 26:
+            imgTxt += "26.png";
+            break;
+        case 27:
+            imgTxt += "27.png";
+            break;
+        case 28:
+            imgTxt += "28.png";
+            break;
+        case 29:
+            imgTxt += "29.png";
+            break;
+        case 30:
+            imgTxt += "30.png";
+            break;
+        case 31:
+            imgTxt += "31.png";
+            break;
+        case 32:
+            imgTxt += "32.png";
+            break;
+        case 33:
+            imgTxt += "33.png";
+            break;
+        case 34:
+            imgTxt += "34.png";
+            break;
+        case 35:
+            imgTxt += "35.png";
+            break;
+        case 36:
+            imgTxt += "36.png";
+            break;
+    }
+
+    return imgTxt;
+}
+var pause = false;
+
+function toggle() {
+    if (pause == false) {
+        stop();
+        ready = false
+        pause = true;
+    } else {
+        start();
+        ready = true
+        pause = false;
     }
 }
 
 // FONCTION CHRONO
 
-let time = document.getElementById('time')
-let ms = 0
-let sec = 0
-var pause = false
-
+let time = document.getElementById('time');
+let ms = 0;
 
 function update_chrono() {
-    ms += 1
+    ms += 1;
 
-    if (ms >= 10){
-        ms = 0
-        sec += 1
+    if (ms >= 10) {
+        ms = 0;
+        sec += 1;
     }
 
-
-    time.innerText = sec 
+    time.innerText = sec;
 }
 
-function toggle(){
-    if (i == false){
-        start()
-        i = true
-    }
-    else {
-        stop()
-        i = false
-    }
-}
-
-function start(){
-    t = setInterval(update_chrono,100)
+function start() {
+    t = setInterval(update_chrono, 100);
     // btn_start.disabled = false
 }
 
-function stop(){
-    clearInterval(t)
+function stop() {
+    clearInterval(t);
     // btn_start.disabled = false
 }
 
-function reset(){
-    clearInterval(t)
-    i = false
+function reset() {
+    clearInterval(t);
+    i = false;
     // btn_start.disabled = false
 
-    h = 0, min = 0, sec = 0, ms = 0
-    sp[0].innerText = h 
-    sp[1].innerText = min 
-    sp[2].innerText = sec 
-    sp[3].innerText = ms 
+    sec = 0, ms = 0;
+    sp[0].innerText = h;
+    sp[1].innerText = min;
+    sp[2].innerText = sec;
+    sp[3].innerText = ms;
 }
-
-
-
-// Les pages
-
-let pageLevel = document.getElementById('levelPage')
-let pageTheme = document.getElementById('themePage')
-let arena = document.getElementById('gameArena')
-let pageNovice = document.getElementsByClassName('quatre')
-
-pageTheme.style.display='none';
 
 // Les boutons de la page Level
 
 let level = null;
 
-let nbRow = null
-let nbCol = null
+let nbRow = null;
+let nbCol = null;
+let repet = null;
 
 document.getElementById('btnNovice').addEventListener('click', function() {
-    level = 'Novice'
-    nbRow = 4
-    nbCol = 4
-    displayTheme()
-})
+    level = 'Novice';
+    nbRow = 4;
+    nbCol = 4;
+    repet = 8;
+    paire = 2;
+    displayTheme();
+});
 
 document.getElementById('btnFacile').addEventListener('click', function() {
-    level = 'Facile'
-    nbRow = 6
-    nbCol = 5
-    displayTheme()
-})
+    level = 'Facile';
+    nbRow = 6;
+    nbCol = 5;
+    repet = 15;
+    paire = 2;
+    displayTheme();
+});
 
 document.getElementById('btnIntermediaire').addEventListener('click', function() {
-    level = 'Intermediaire'
-    nbRow = 8
-    nbCol = 8
-    displayTheme()
-})
+    level = 'Intermediaire';
+    nbRow = 8;
+    nbCol = 8;
+    repet = 32;
+    paire = 2;
+    displayTheme();
+});
 
 document.getElementById('btnDifficile').addEventListener('click', function() {
-    level = 'Difficile'
-    nbRow = 12
-    nbCol = 12
-    displayTheme()
-})
+    level = 'Difficile';
+    nbRow = 12;
+    nbCol = 12;
+    repet = 36;
+    paire = 4;
+    displayTheme();
+});
 
 document.getElementById('btnExtreme').addEventListener('click', function() {
-    level = 'Extreme'
-    nbRow = 20
-    nbCol = 20
-    displayTheme()
-})
+    level = 'Extreme';
+    nbRow = 20;
+    nbCol = 20;
+    repet = 36;
+    paire = 6;
+    displayTheme();
+});
 
 // Les boutons de la page Theme
 
-let theme = null
-let bg = null
-let dirTheme = null
+let theme = null;
+let bg = null;
+let dirTheme = null;
 
 document.getElementById('themeFuturiste').addEventListener('click', function() {
-    theme = 'Futuriste'
-    dirTheme = '../../assets/deck_futuriste/'
-    displayMemory()
-})
+    theme = 'Futuriste';
+    dirTheme = '../../assets/deck_futuriste/';
+    displayMemory();
+});
 
 document.getElementById('themeMagic').addEventListener('click', function() {
-    theme = 'Magic'
-    dirTheme = '../../assets/deck_magic/'
-    displayMemory()
-})
+    theme = 'Magic';
+    dirTheme = '../../assets/deck_magic/';
+    displayMemory();
+});
 
 document.getElementById('themeHeathstone').addEventListener('click', function() {
-    theme = 'Hearthstone'
-    dirTheme = '../../assets/deck_hearthstone/'
-    displayMemory()
-})
+    theme = 'Hearthstone';
+    dirTheme = '../../assets/deck_hearthstone/';
+    displayMemory();
+});
 
 document.getElementById('themeClash').addEventListener('click', function() {
-    theme = 'Clash'
-    dirTheme = '../../assets/deck_clashRoyale/'
-    displayMemory()
-})
+    theme = 'Clash';
+    dirTheme = '../../assets/deck_clashRoyale/';
+    displayMemory();
+});
+
+function displayEndPage() {
+    endPage.style.display = 'flex';
+    document.getElementById('endScore').innerText = sec;
+    reset()
+}
+
+function insertScore() {
+    var xhr = new XMLHttpRequest();
+    var url = "../../utils/ajaxInsertScore.php";
+    var params = "score=" + sec + "&level=" + level;
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            // Gérer la réponse du serveur ici (par exemple, afficher un message de confirmation)
+            console.log(xhr.responseText);
+        }
+    };
+
+    xhr.send(params);
+}
 
 
 

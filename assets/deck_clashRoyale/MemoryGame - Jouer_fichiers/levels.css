@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} 
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* ========================================================= */
+/* ================ PAGE CHOIX DU NIVEAU =================== */
+/* ========================================================= */
+
+#levelPage {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background-color: #0f0e2e;    
+}
+
+#levelPage .container{
+    margin: 100px auto;
+    width: 90%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btnLevel{
+    color: lightgray;
+    background-color: rgb(39, 38, 69);
+    width: 100% ;
+    border: 0;
+    margin-bottom: 40px;
+    border-radius: 5px;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#btnNovice{
+    background-color: rgb(78, 136, 217);
+    background: linear-gradient(130deg, cyan 0%, blue 100%);
+}
+
+#btnNovice:hover{
+    box-shadow: 0 0 40px 10px blue;
+}
+
+#btnFacile{
+    background-color:green;
+    background: linear-gradient(130deg, chartreuse 0%, darkgreen 100%);
+}
+
+#btnFacile:hover{
+    box-shadow: 0 0 40px 10px green;
+}
+
+#btnIntermediaire{
+    background: linear-gradient(130deg, orange 0%, red 100%);
+}
+
+#btnIntermediaire:hover{
+    box-shadow: 0 0 40px 10px red;
+}
+
+#btnDifficile{
+    background: linear-gradient(130deg,rgb(151, 16, 151) 0%, rgb(30, 1, 59) 100%);
+}
+
+#btnDifficile:hover{
+    box-shadow: 0 0 40px 10px purple;
+}
+
+#btnExtreme{
+    background: linear-gradient(130deg, rgb(30, 30, 30) 0%, black 10%,black 90%, rgb(30, 30, 30) 100%);
+}
+
+#btnExtreme:hover{
+    box-shadow: 0 0 40px 10px black;
+}
+
+/* ========================================================= */
+/* ================= PAGE CHOIX DU THÈME =================== */
+/* ========================================================= */

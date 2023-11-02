@@ -1,6 +1,7 @@
 <?php 
 
 require_once '../../utils/common.php'; 
+include SITE_ROOT ."utils/database.php";
 
 ?>
 
@@ -16,7 +17,7 @@ require_once '../../utils/common.php';
     <link rel="stylesheet" href="<?php echo PROJECT_FOLDER ; ?>styles/memory.css">
 
     <script src="../../scripts/game.js" defer></script>
-    <script src="../../ scripts/chat.js" defer></script> 
+    <script src="../../scripts/chat.js" defer></script> 
 
 </head>
 
@@ -40,7 +41,7 @@ require_once '../../utils/common.php';
 
     </div>
 
-    <div id="themePage">
+    <div id="themePage" style="display: none;">
 
         <div class="container">
 
@@ -61,14 +62,33 @@ require_once '../../utils/common.php';
 
         <div id="hud">
 
+            <p id="resultat"></p>
+
             <p id="score"><span id="time">0</span>sec</p> 
 
             <button id="pause" onclick="toggle()"><span></span><span></span></button>
             <a href="../../index.php"><button id="quit">QUIT</button></a>
 
         </div>
+
+        <table id="table">
+
+
+        </table>
+
         
     </div>
+
+    <div id="end">
+
+        <h1>Score : <span id="endScore"></span> sec</h1>
+
+
+        <a href="./index.php"><button>REJOUER</button></a>
+        <a href="./scores.php"><button>SCORES</button></a>
+        
+    </div>
+
 
     <?php require_once SITE_ROOT.'chat.php'; ?>
 

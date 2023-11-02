@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="fr"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MemoryGame - Jouer</title>
+    <link rel="stylesheet" href="MemoryGame%20-%20Jouer_fichiers/levels.css">
+    <link rel="stylesheet" href="MemoryGame%20-%20Jouer_fichiers/themes.css">
+    <link rel="stylesheet" href="MemoryGame%20-%20Jouer_fichiers/chat.css"> 
+    <link rel="stylesheet" href="MemoryGame%20-%20Jouer_fichiers/memory.css">
+
+    <script src="MemoryGame%20-%20Jouer_fichiers/game.js" defer="defer"></script>
+    <script src="MemoryGame%20-%20Jouer_fichiers/chat.js" defer="defer"></script> 
+
+</head>
+
+<body>
+
+    <div id="levelPage" style="display: none;">
+
+        <div class="container">
+
+            <button class="btnLevel" id="btnNovice">Novice - 4×4</button>
+
+            <button class="btnLevel" id="btnFacile">Facile - 5×6</button>
+
+            <button class="btnLevel" id="btnIntermediaire">Intermediaire - 8×8</button>
+
+            <button class="btnLevel" id="btnDifficile">Difficile - 12×12</button>
+
+            <button class="btnLevel" id="btnExtreme">Extrême 20×20</button>
+
+        </div>
+
+    </div>
+
+    <div id="themePage" style="display: none;">
+
+        <div class="container">
+
+            <div class="ligne1">
+                <button class="btnTheme" id="themeFuturiste"></button>
+                <button class="btnTheme" id="themeMagic"></button>
+            </div>
+
+            <div class="ligne2">
+                <button class="btnTheme" id="themeHeathstone"></button>
+                <button class="btnTheme" id="themeClash"></button>
+            </div>    
+
+        </div>
+    </div> 
+
+    <div id="gameArena">   
+
+        <div id="hud">
+
+            <p id="resultat"></p>
+
+            <p id="score"><span id="time">4</span>sec</p> 
+
+            <button id="pause" onclick="toggle()"><span></span><span></span></button>
+            <a href="http://localhost:8888/MemoryGame2/index.php"><button id="quit">QUIT</button></a>
+
+        </div>
+
+        <table id="table" style="background-image: url(&quot;../../assets/deck_magic/background.jpg&quot;);"><tbody><tr><td onclick='verif("0-0")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("0-1")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("0-2")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("0-3")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("0-4")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("0-5")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("0-6")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("0-7")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("0-8")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("0-9")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("0-10")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("0-11")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td></tr><tr><td onclick='verif("1-0")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("1-1")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("1-2")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("1-3")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("1-4")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("1-5")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("1-6")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("1-7")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("1-8")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("1-9")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("1-10")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("1-11")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td></tr><tr><td onclick='verif("2-0")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("2-1")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("2-2")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("2-3")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("2-4")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("2-5")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("2-6")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("2-7")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("2-8")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("2-9")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("2-10")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("2-11")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td></tr><tr><td onclick='verif("3-0")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("3-1")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("3-2")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("3-3")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("3-4")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("3-5")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("3-6")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("3-7")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("3-8")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("3-9")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("3-10")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("3-11")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td></tr><tr><td onclick='verif("4-0")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("4-1")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("4-2")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("4-3")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("4-4")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("4-5")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("4-6")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("4-7")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("4-8")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("4-9")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("4-10")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("4-11")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td></tr><tr><td onclick='verif("5-0")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("5-1")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("5-2")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("5-3")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("5-4")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("5-5")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("5-6")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("5-7")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("5-8")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("5-9")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("5-10")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("5-11")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td></tr><tr><td onclick='verif("6-0")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("6-1")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("6-2")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("6-3")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("6-4")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("6-5")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("6-6")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("6-7")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("6-8")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("6-9")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("6-10")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("6-11")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td></tr><tr><td onclick='verif("7-0")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("7-1")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("7-2")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("7-3")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("7-4")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("7-5")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("7-6")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("7-7")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("7-8")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("7-9")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("7-10")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("7-11")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td></tr><tr><td onclick='verif("8-0")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("8-1")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("8-2")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("8-3")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("8-4")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("8-5")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("8-6")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("8-7")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("8-8")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("8-9")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("8-10")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("8-11")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td></tr><tr><td onclick='verif("9-0")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("9-1")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("9-2")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("9-3")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("9-4")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("9-5")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("9-6")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("9-7")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("9-8")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("9-9")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("9-10")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("9-11")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td></tr><tr><td onclick='verif("10-0")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("10-1")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("10-2")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("10-3")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("10-4")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("10-5")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("10-6")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("10-7")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("10-8")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("10-9")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("10-10")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("10-11")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td></tr><tr><td onclick='verif("11-0")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("11-1")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("11-2")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("11-3")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("11-4")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("11-5")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("11-6")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("11-7")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("11-8")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("11-9")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("11-10")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td><td onclick='verif("11-11")'> <img src="MemoryGame%20-%20Jouer_fichiers/0.png"> </td></tr></tbody></table>
+
+        
+    </div>
+
+    <div id="end" style="display: none;">
+
+        <h1>Score : <span id="endScore"></span> sec</h1>
+
+
+        <a href="http://localhost:8888/MemoryGame2/games/memory/index.php"><button>REJOUER</button></a>
+        <a href="http://localhost:8888/MemoryGame2/games/memory/scores.php"><button>SCORES</button></a>
+        
+    </div>
+
+
+    <script src="MemoryGame%20-%20Jouer_fichiers/jquery.min.js"></script>
+<button id="chatbox-close" type="menu"></button>
+
+    <div id="chatbox">
+
+    <div id="screen">
+        <div class="other">
+                            <div class="infos">
+                                <img src="MemoryGame%20-%20Jouer_fichiers/profile_002.jpg"> 
+                                <section> Genzo 
+                                <span> 2023-10-29 19:38:36</span></section>
+                            </div>
+                            <p> Wsh</p>
+                        </div><div class="other">
+                            <div class="infos">
+                                <img src="MemoryGame%20-%20Jouer_fichiers/profile_003.jpg"> 
+                                <section> Nano 
+                                <span> 2023-10-29 23:45:16</span></section>
+                            </div>
+                            <p> Coucou</p>
+                        </div><div class="me">
+                            <div class="infos">
+                                <section><span> 2023-10-29 23:56:41</span></section>
+                            </div>
+                            <p> Yo les bougs</p>
+                        </div><div class="me">
+                            <div class="infos">
+                                <section><span> 2023-10-29 23:56:46</span></section>
+                            </div>
+                            <p> Yo les bougs</p>
+                        </div><div class="me">
+                            <div class="infos">
+                                <section><span> 2023-10-29 23:57:47</span></section>
+                            </div>
+                            <p> Yo les bougs</p>
+                        </div><div class="me">
+                            <div class="infos">
+                                <section><span> 2023-10-29 23:57:54</span></section>
+                            </div>
+                            <p> Yo les bougs</p>
+                        </div><div class="me">
+                            <div class="infos">
+                                <section><span> 2023-10-29 23:59:50</span></section>
+                            </div>
+                            <p> Yo les bougs</p>
+                        </div><div class="me">
+                            <div class="infos">
+                                <section><span> 2023-10-30 00:00:05</span></section>
+                            </div>
+                            <p> Yo les bougs</p>
+                        </div><div class="me">
+                            <div class="infos">
+                                <section><span> 2023-10-30 00:20:26</span></section>
+                            </div>
+                            <p> Yo les bougs</p>
+                        </div><div class="me">
+                            <div class="infos">
+                                <section><span> 2023-10-30 00:29:17</span></section>
+                            </div>
+                            <p> Test pour voir si le message s'envois qu'une seul fois</p>
+                        </div><div class="me">
+                            <div class="infos">
+                                <section><span> 2023-10-30 00:29:24</span></section>
+                            </div>
+                            <p> Test pour voir si le message s'envois qu'une seul fois</p>
+                        </div><div class="me">
+                            <div class="infos">
+                                <section><span> 2023-10-30 00:29:29</span></section>
+                            </div>
+                            <p> Test pour voir si le message s'envois qu'une seul fois</p>
+                        </div><div class="me">
+                            <div class="infos">
+                                <section><span> 2023-10-30 01:42:33</span></section>
+                            </div>
+                            <p> gde</p>
+                        </div><div class="me">
+                            <div class="infos">
+                                <section><span> 2023-10-30 01:43:19</span></section>
+                            </div>
+                            <p> J'avoue je spam</p>
+                        </div><div class="me">
+                            <div class="infos">
+                                <section><span> 2023-10-30 01:43:26</span></section>
+                            </div>
+                            <p> J'avoue je spam</p>
+                        </div><div class="me">
+                            <div class="infos">
+                                <section><span> 2023-10-30 01:45:04</span></section>
+                            </div>
+                            <p> J'avoue je spam</p>
+                        </div><div class="me">
+                            <div class="infos">
+                                <section><span> 2023-10-30 01:45:21</span></section>
+                            </div>
+                            <p> Ça rend ouf pourquoi ça écris en plusieurs fois</p>
+                        </div><div class="other">
+                            <div class="infos">
+                                <img src="MemoryGame%20-%20Jouer_fichiers/profile.jpg"> 
+                                <section> MarioBros 
+                                <span> 2023-10-30 09:19:26</span></section>
+                            </div>
+                            <p> Je sais pas xpdtrrrrrrr</p>
+                        </div><div class="other">
+                            <div class="infos">
+                                <img src="MemoryGame%20-%20Jouer_fichiers/profile.jpg"> 
+                                <section> MarioBros 
+                                <span> 2023-10-30 09:19:37</span></section>
+                            </div>
+                            <p> Je sais pas xpdtrrrrrrr</p>
+                        </div><div class="me">
+                            <div class="infos">
+                                <section><span> 2023-10-30 10:33:42</span></section>
+                            </div>
+                            <p> Bonjour tout le monde !</p>
+                        </div><div class="me">
+                            <div class="infos">
+                                <section><span> 2023-10-30 10:33:59</span></section>
+                            </div>
+                            <p> Bonjour tout le monde !</p>
+                        </div><div class="me">
+                            <div class="infos">
+                                <section><span> 2023-10-30 16:47:42</span></section>
+                            </div>
+                            <p> Dédicasse à larbi</p>
+                        </div><div class="other">
+                            <div class="infos">
+                                <img src="MemoryGame%20-%20Jouer_fichiers/profile_002.jpg"> 
+                                <section> Genzo 
+                                <span> 2023-11-01 14:16:03</span></section>
+                            </div>
+                            <p> SDSD</p>
+                        </div><div class="other">
+                            <div class="infos">
+                                <img src="MemoryGame%20-%20Jouer_fichiers/profile_002.jpg"> 
+                                <section> Genzo 
+                                <span> 2023-11-01 14:18:09</span></section>
+                            </div>
+                            <p> SDSD</p>
+                        </div><div class="other">
+                            <div class="infos">
+                                <img src="MemoryGame%20-%20Jouer_fichiers/profile_002.jpg"> 
+                                <section> Genzo 
+                                <span> 2023-11-01 14:18:27</span></section>
+                            </div>
+                            <p> SDSD</p>
+                        </div><div class="other">
+                            <div class="infos">
+                                <img src="MemoryGame%20-%20Jouer_fichiers/profile_002.jpg"> 
+                                <section> Genzo 
+                                <span> 2023-11-01 14:35:45</span></section>
+                            </div>
+                            <p> SDSD</p>
+                        </div><div class="other">
+                            <div class="infos">
+                                <img src="MemoryGame%20-%20Jouer_fichiers/profile_002.jpg"> 
+                                <section> Genzo 
+                                <span> 2023-11-01 14:35:54</span></section>
+                            </div>
+                            <p> Coucou Ajax</p>
+                        </div><div class="other">
+                            <div class="infos">
+                                <img src="MemoryGame%20-%20Jouer_fichiers/profile_002.jpg"> 
+                                <section> Genzo 
+                                <span> 2023-11-01 14:36:46</span></section>
+                            </div>
+                            <p> Coucou Ajax</p>
+                        </div><div class="other">
+                            <div class="infos">
+                                <img src="MemoryGame%20-%20Jouer_fichiers/profile_002.jpg"> 
+                                <section> Genzo 
+                                <span> 2023-11-01 14:36:54</span></section>
+                            </div>
+                            <p> ça va Ajax ?</p>
+                        </div><div class="other">
+                            <div class="infos">
+                                <img src="MemoryGame%20-%20Jouer_fichiers/profile_002.jpg"> 
+                                <section> Genzo 
+                                <span> 2023-11-01 14:37:17</span></section>
+                            </div>
+                            <p> Ouai et toi ?</p>
+                        </div><div class="other">
+                            <div class="infos">
+                                <img src="MemoryGame%20-%20Jouer_fichiers/profile_002.jpg"> 
+                                <section> Genzo 
+                                <span> 2023-11-01 14:37:22</span></section>
+                            </div>
+                            <p> Ouai et toi ?</p>
+                        </div><div class="other">
+                            <div class="infos">
+                                <img src="MemoryGame%20-%20Jouer_fichiers/profile_002.jpg"> 
+                                <section> Genzo 
+                                <span> 2023-11-01 14:37:56</span></section>
+                            </div>
+                            <p> Arrête de parler en double</p>
+                        </div><div class="other">
+                            <div class="infos">
+                                <img src="MemoryGame%20-%20Jouer_fichiers/profile_002.jpg"> 
+                                <section> Genzo 
+                                <span> 2023-11-01 14:38:12</span></section>
+                            </div>
+                            <p> Stp</p>
+                        </div><div class="other">
+                            <div class="infos">
+                                <img src="MemoryGame%20-%20Jouer_fichiers/profile_002.jpg"> 
+                                <section> Genzo 
+                                <span> 2023-11-01 14:50:13</span></section>
+                            </div>
+                            <p> Tu fais quoi Ajax ?</p>
+                        </div><div class="other">
+                            <div class="infos">
+                                <img src="MemoryGame%20-%20Jouer_fichiers/profile.jpg"> 
+                                <section> MarioBros 
+                                <span> 2023-11-02 11:35:46</span></section>
+                            </div>
+                            <p> cc</p>
+                        </div><div class="other">
+                            <div class="infos">
+                                <img src="MemoryGame%20-%20Jouer_fichiers/profile.jpg"> 
+                                <section> MarioBros 
+                                <span> 2023-11-02 11:46:57</span></section>
+                            </div>
+                            <p> cc</p>
+                        </div><div class="other">
+                            <div class="infos">
+                                <img src="MemoryGame%20-%20Jouer_fichiers/profile.jpg"> 
+                                <section> MarioBros 
+                                <span> 2023-11-02 11:47:49</span></section>
+                            </div>
+                            <p> cc</p>
+                        </div><div class="other">
+                            <div class="infos">
+                                <img src="MemoryGame%20-%20Jouer_fichiers/profile.jpg"> 
+                                <section> MarioBros 
+                                <span> 2023-11-02 11:48:01</span></section>
+                            </div>
+                            <p> Salut ajax tu me soul</p>
+                        </div><div class="other">
+                            <div class="infos">
+                                <img src="MemoryGame%20-%20Jouer_fichiers/profile.jpg"> 
+                                <section> MarioBros 
+                                <span> 2023-11-02 14:01:50</span></section>
+                            </div>
+                            <p> Salut ajax tu me soul</p>
+                        </div><div class="other">
+                            <div class="infos">
+                                <img src="MemoryGame%20-%20Jouer_fichiers/profile.jpg"> 
+                                <section> MarioBros 
+                                <span> 2023-11-02 14:01:56</span></section>
+                            </div>
+                            <p> cc</p>
+                        </div><div class="other">
+                            <div class="infos">
+                                <img src="MemoryGame%20-%20Jouer_fichiers/profile.jpg"> 
+                                <section> MarioBros 
+                                <span> 2023-11-02 14:02:09</span></section>
+                            </div>
+                            <p> cc</p>
+                        </div><div class="other">
+                            <div class="infos">
+                                <img src="MemoryGame%20-%20Jouer_fichiers/profile.jpg"> 
+                                <section> MarioBros 
+                                <span> 2023-11-02 14:12:23</span></section>
+                            </div>
+                            <p> cc</p>
+                        </div><div class="other">
+                            <div class="infos">
+                                <img src="MemoryGame%20-%20Jouer_fichiers/profile.jpg"> 
+                                <section> MarioBros 
+                                <span> 2023-11-02 14:51:38</span></section>
+                            </div>
+                            <p> salut</p>
+                        </div><div class="other">
+                            <div class="infos">
+                                <img src="MemoryGame%20-%20Jouer_fichiers/profile.jpg"> 
+                                <section> MarioBros 
+                                <span> 2023-11-02 14:58:04</span></section>
+                            </div>
+                            <p> coucoi</p>
+                        </div><div class="other">
+                            <div class="infos">
+                                <img src="MemoryGame%20-%20Jouer_fichiers/profile.jpg"> 
+                                <section> MarioBros 
+                                <span> 2023-11-02 15:06:14</span></section>
+                            </div>
+                            <p> coucoi</p>
+                        </div><div class="other">
+                            <div class="infos">
+                                <img src="MemoryGame%20-%20Jouer_fichiers/profile.jpg"> 
+                                <section> MarioBros 
+                                <span> 2023-11-02 15:06:17</span></section>
+                            </div>
+                            <p> cc</p>
+                        </div><div class="other">
+                            <div class="infos">
+                                <img src="MemoryGame%20-%20Jouer_fichiers/profile.jpg"> 
+                                <section> MarioBros 
+                                <span> 2023-11-02 15:08:34</span></section>
+                            </div>
+                            <p> cc</p>
+                        </div><div class="other">
+                            <div class="infos">
+                                <img src="MemoryGame%20-%20Jouer_fichiers/profile.jpg"> 
+                                <section> MarioBros 
+                                <span> 2023-11-02 15:08:38</span></section>
+                            </div>
+                            <p> cc</p>
+                        </div><div class="other">
+                            <div class="infos">
+                                <img src="MemoryGame%20-%20Jouer_fichiers/profile.jpg"> 
+                                <section> MarioBros 
+                                <span> 2023-11-02 15:09:20</span></section>
+                            </div>
+                            <p> cc</p>
+                        </div><div class="other">
+                            <div class="infos">
+                                <img src="MemoryGame%20-%20Jouer_fichiers/profile.jpg"> 
+                                <section> MarioBros 
+                                <span> 2023-11-02 15:09:31</span></section>
+                            </div>
+                            <p> cc</p>
+                        </div><div class="other">
+                            <div class="infos">
+                                <img src="MemoryGame%20-%20Jouer_fichiers/profile.jpg"> 
+                                <section> MarioBros 
+                                <span> 2023-11-02 15:14:51</span></section>
+                            </div>
+                            <p> cc</p>
+                        </div><div class="other">
+                            <div class="infos">
+                                <img src="MemoryGame%20-%20Jouer_fichiers/profile.jpg"> 
+                                <section> MarioBros 
+                                <span> 2023-11-02 15:16:04</span></section>
+                            </div>
+                            <p> cc</p>
+                        </div><div class="other">
+                            <div class="infos">
+                                <img src="MemoryGame%20-%20Jouer_fichiers/profile.jpg"> 
+                                <section> MarioBros 
+                                <span> 2023-11-02 15:42:52</span></section>
+                            </div>
+                            <p> cc</p>
+                        </div><div class="other">
+                            <div class="infos">
+                                <img src="MemoryGame%20-%20Jouer_fichiers/profile.jpg"> 
+                                <section> MarioBros 
+                                <span> 2023-11-02 16:18:09</span></section>
+                            </div>
+                            <p> cc</p>
+                        </div><div class="other">
+                            <div class="infos">
+                                <img src="MemoryGame%20-%20Jouer_fichiers/profile.jpg"> 
+                                <section> MarioBros 
+                                <span> 2023-11-02 16:18:18</span></section>
+                            </div>
+                            <p> esdrftgyhbujni</p>
+                        </div>
+
+
+            <!-- <p class="me">Y'a qui ?</p>
+
+            <div class="sender"><img src="assets/pdp_younes.webp" alt=""> <section>Genzo <span>- 18h45</span></section></div>
+            <p class="other">Moi. Mais j'veux pas jouer avec toi t'es trop guez. Tu fais que des team diff</p>
+
+            <p class="me">Toi j'vais t'attraper à la coding t'es mort! Valérie ou pas tu vas voir</p>
+
+            <div class="sender"><img src="assets/pdp_alexis.jpg" alt=""> <section>DarkVador <span>- 19h01</span></section></div>
+            <p class="other">Azy quand tu veux, où tu veux pelo</p>
+
+            <p class="other">J'arrive avec mes poings</p>
+
+            <p class="me">J'viens tout seul, tkt j'ai vraiment pas peur de toi!</p>
+            
+            <div class="sender"><img src="assets/pdp_nicolas.webp" alt=""> <section>NicoPinguin <span>- 19h05</span></section></div>
+            <p class="other">Azi, je ramène mes gants de boxe, on va niqué de fou la !</p>
+
+            <p class="me">Aah, tu fais de la boxe XD j'savais pas</p>
+
+            <p class="other">Je FF t'es trop un lâche</p>
+             -->
+                        <img id="gifCat" src="MemoryGame%20-%20Jouer_fichiers/33s.gif" alt="">
+
+            
+
+        </div>
+
+        <div id="envoyer-message">
+            <form method="POST" id="formEnvoieMessage">
+
+                <input type="text" name="contenu" id="message" placeholder="Entrez votre message" wrap="hard">
+                <input type="submit" id="send" name="sendMessage">
+
+            </form>
+
+        </div>
+
+
+    </div>
+
+
+ 
+</body></html>
