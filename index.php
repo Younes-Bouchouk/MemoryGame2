@@ -122,7 +122,7 @@
     </div>
 
     <div id="team">
-        <h1>Notre Équipe</h1>
+        <h1>ConflicTeam</h1>
         <img id="hr" src="assets/hr.JPG" alt="">
         <div id="profils">
             <div class="profil">
@@ -142,7 +142,7 @@
                 <h3>NICOLAS<br> 
                     <span>(Scrum Master)</span>
                 </h3>
-                <h4> 'EX' Meilleur Scrum Master</h4>
+                <h4> 'EX' plus nul Scrum Master</h4>
                 <div class="rs">
                     <a></a>
                     <a href="https://github.com/Jjbilou" target="_blank"></a>

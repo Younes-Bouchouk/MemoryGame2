@@ -114,7 +114,7 @@
 
             <div id="bio">
                 <p>Biographie :</p>
-                <p>ConflictTeam + Valentin = ❤️😏
+                <p>ConflictTeam + Valentin + Thibaud + Joachim = ❤️🥰😘🥵😏
                 </p>
             </div>
             

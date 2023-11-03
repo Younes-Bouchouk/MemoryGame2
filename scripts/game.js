@@ -7,6 +7,7 @@ pageTheme.style.display = 'none';
 let arena = document.getElementById('gameArena');
 let endPage = document.getElementById('end');
 endPage.style.display = 'none';
+let table = document.getElementById('table')
 
 var tabJeu;
 var tabResultat;
@@ -39,9 +40,9 @@ function afficherTableau() {
 
         for (var j = 0; j < tabJeu[i].length; j++) {
             if (tabJeu[i][j] === 0) {
-                txt += "<td onClick='verif(\"" + i + "-" + j + "\")'> <img style='aspect-ratio: 1 / 2' src='" + dirTheme + "0.png' > </td>";
+                txt += "<td class='card-back' onClick='verif(\"" + i + "-" + j + "\")'> <img style='aspect-ratio: 1 / 2' src='" + dirTheme + "0.png' > </td>";
             } else {
-                txt += "<td class='card " + (tabJeu[i][j] === 0 ? 'card-back' : '') + "'> <img src='" + getCards(tabJeu[i][j]) + "' > </td>";
+                txt += "<td class='card-back' > <img src='" + getCards(tabJeu[i][j]) + "' > </td>";
                 console.log(tabJeu[i][j]);
             }
         }
@@ -127,8 +128,6 @@ function verif(card) {
         var ligne = card.substr(0, 1);
         var colonne = card.substr(2, 1);
 
-        var currentCard = document.querySelector(`tr:nth-child(${ligne}) td:nth-child(${colonne})`);
-        currentCard.classList.toggle('card-back'); // Bascule la classe card-back pour voir le verso
 
         tabJeu[ligne][colonne] = tabResultat[ligne][colonne];
         afficherTableau();
@@ -290,6 +289,7 @@ function toggle() {
 // FONCTION CHRONO
 
 let time = document.getElementById('time');
+let time2 = document.getElementById('ms');
 let ms = 0;
 
 function update_chrono() {
@@ -301,6 +301,7 @@ function update_chrono() {
     }
 
     time.innerText = sec;
+    time2.innerText = ms;
 }
 
 function start() {
@@ -335,6 +336,7 @@ let repet = null;
 
 document.getElementById('btnNovice').addEventListener('click', function() {
     level = 'Novice';
+    table.classList.add('Novice')
     nbRow = 4;
     nbCol = 4;
     repet = 8;
@@ -344,6 +346,7 @@ document.getElementById('btnNovice').addEventListener('click', function() {
 
 document.getElementById('btnFacile').addEventListener('click', function() {
     level = 'Facile';
+    table.classList.add('Facile')
     nbRow = 6;
     nbCol = 5;
     repet = 15;
@@ -353,6 +356,7 @@ document.getElementById('btnFacile').addEventListener('click', function() {
 
 document.getElementById('btnIntermediaire').addEventListener('click', function() {
     level = 'Intermediaire';
+    table.classList.add('Intermediaire')
     nbRow = 8;
     nbCol = 8;
     repet = 32;
@@ -362,6 +366,7 @@ document.getElementById('btnIntermediaire').addEventListener('click', function()
 
 document.getElementById('btnDifficile').addEventListener('click', function() {
     level = 'Difficile';
+    table.classList.add('Difficile')
     nbRow = 12;
     nbCol = 12;
     repet = 36;
@@ -371,6 +376,7 @@ document.getElementById('btnDifficile').addEventListener('click', function() {
 
 document.getElementById('btnExtreme').addEventListener('click', function() {
     level = 'Extreme';
+    table.classList.add('Extreme')
     nbRow = 20;
     nbCol = 20;
     repet = 36;
@@ -383,28 +389,37 @@ document.getElementById('btnExtreme').addEventListener('click', function() {
 let theme = null;
 let bg = null;
 let dirTheme = null;
+var themeSound = document.getElementById('themeSound');
 
 document.getElementById('themeFuturiste').addEventListener('click', function() {
     theme = 'Futuriste';
     dirTheme = '../../assets/deck_futuriste/';
+    var themeSound = document.getElementById('themeSoundFutur');
+    themeSound.play();
     displayMemory();
 });
 
 document.getElementById('themeMagic').addEventListener('click', function() {
     theme = 'Magic';
     dirTheme = '../../assets/deck_magic/';
+    var themeSound = document.getElementById('themeSoundMagics');
+    themeSound.play();
     displayMemory();
 });
 
 document.getElementById('themeHeathstone').addEventListener('click', function() {
     theme = 'Hearthstone';
     dirTheme = '../../assets/deck_hearthstone/';
+    var themeSound = document.getElementById('themeSoundHearth');
+    themeSound.play();
     displayMemory();
 });
 
 document.getElementById('themeClash').addEventListener('click', function() {
     theme = 'Clash';
     dirTheme = '../../assets/deck_clashRoyale/';
+    var themeSound = document.getElementById('themeSoundClash');
+    themeSound.play();
     displayMemory();
 });
 

@@ -38,7 +38,7 @@ table {
 }
 
 #time {
-    margin-right: 10px;
+    /* margin-right: 10px; */
     font-size: 30px;
 }
 
@@ -96,6 +96,61 @@ table {
     background-size: cover;
 }
 
+table td {
+    position: relative;
+}
+
+table td img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.Novice td {
+
+}
+
+.Novice td img {
+    height: 150px;
+    width: 120px;
+}
+
+.Facile td {
+
+}
+
+.Facile td img {
+    height: 100px;
+    width: 80px;
+}
+
+.Intermediaire td {
+
+}
+
+.Intermediaire td img {
+    height: 80px;
+    width: 65px;
+}
+
+.Difficile td {
+
+}
+
+.Difficile td img {
+    height: 45px;
+    width: 30px;
+}
+
+.Extreme td {
+
+}
+
+.Extreme td img {
+
+}
+
 
 
 .carte {
@@ -146,12 +201,12 @@ table {
 
 .flipped {
     transform: scaleX(-1);
-    transition: transform 2s;
+    transition: transform 5s linear ;
 }
 
-.card-back {
-    transform: rotateY(0deg);
-    transition: transform 2s;
+img {
+    transform: rotateY(180deg);
+    transition: transform 5s linear ;
 }
 
 
