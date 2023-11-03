@@ -54,3 +54,12 @@ input{
     font-weight: bold;
 }
 
+#indicationPassword{
+    width: 550px;
+    max-width: 100%;
+}
+
+#progress {
+    width: 550px;
+    max-width: 100%;
+}

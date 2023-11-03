@@ -90,6 +90,8 @@ if (isset($_GET["inscription"])) {
     <link rel="stylesheet" href="styles/register.css">
     <link rel="stylesheet" href="styles/footer.css">
     <title>MemoryGame - Inscription</title>
+
+
 </head>
 
 <body>
@@ -127,6 +129,9 @@ if (isset($_GET["inscription"])) {
 
         <input type="password" id="motDePasse" placeholder="Mot de passe" required="required" name="password" minlength="8">
         <label for="motDePasse"></label>
+        <p id="indicationPassword"></p>  
+        <progress id="progress" value="0" max="100">70</progress> 
+        <span id="progresslabel"></span> 
         <?php if(isset($passwordErrorMessage)):?>
             <p><?php echo $passwordErrorMessage ?></p>
         <?php endif; ?>
@@ -150,10 +155,10 @@ if (isset($_GET["inscription"])) {
 
 
     </form>
-
     <?php require_once SITE_ROOT . 'partials/footer.php'; ?>
 </body>
 
+<script src="scripts/verif.js"></script>
 <script src="scripts/app.js"></script> 
 
 </html>
